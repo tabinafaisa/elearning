@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="{{ asset('/') }}css/font-awesome-pro.css">
     <link rel="stylesheet" href="{{ asset('/') }}css/spacing.css">
     <link rel="stylesheet" href="{{ asset('/') }}css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    @stack('css')
 </head>
 
 <body>
@@ -468,8 +470,10 @@
     <script src="{{ asset('/') }}js/imagesloaded-pkgd.js"></script>
     <script src="{{ asset('/') }}js/ajax-form.js"></script>
     <script src="{{ asset('/') }}js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    @stack('js')
 </body>
 
 </html>

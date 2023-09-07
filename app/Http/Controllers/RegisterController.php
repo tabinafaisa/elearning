@@ -15,6 +15,7 @@ class RegisterController extends Controller
     {
         $validate = $request->validate([
             'nip' => 'required|unique:guru,nip',
+            'nama' => 'required',
             'username' => 'required|unique:users,username',
             'password' => 'required|min:8|'
         ]);
@@ -28,6 +29,7 @@ class RegisterController extends Controller
         $createuser = User::create($user);
 
         $guru = [
+            'nama' => $request->nama,
             'nip' => $request->nip,
             'user_id' => $createuser->id
         ];
@@ -39,6 +41,7 @@ class RegisterController extends Controller
     public function siswa(Request $request) {
         $validate = $request->validate([
             'nisn' => 'required|unique:siswa,nisn',
+            'nama' => 'required',
             'username' => 'required|unique:users,username',
             'password' => 'required|min:8|',
             'kelas' => 'required',
@@ -55,6 +58,7 @@ class RegisterController extends Controller
 
         $siswa = [
             'user_id' => $createuser->id,
+            'nama' => $request->nama,
             'nisn' => $request->nisn,
             'kelas' => $request->kelas,
             'jurusan' => $request->jurusan,

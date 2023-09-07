@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KelasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,13 +21,21 @@ use App\Http\Controllers\DashboardController;
 //     return view('home/index');
 // });
 
-Route::get('/register', [RegisterController::class, 'register']);
-Route::get('/register/guru', [RegisterController::class, 'register_guru']);
-Route::post('/register/guru/post', [RegisterController::class, 'guru']);
-Route::get('/register/siswa', [RegisterController::class, 'register_siswa']);
-Route::post('/register/siswa/post', [RegisterController::class, 'siswa']);
-Route::get('/login', [AuthController::class, 'login']);
-Route::post('/', [AuthController::class, 'auth']);
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', [DashboardController::class, 'index']);
+    Route::get('/logout', [AuthController::class, 'logout']);
+    Route::resource('/kelas', KelasController::class);
+});
 
-Route::get('/home', [DashboardController::class, 'index']);
-Route::get('/logout', [AuthController::class, 'logout']);
+Route::middleware(['guest'])->group(function () {
+    Route::get('/register', [RegisterController::class, 'register']);
+    Route::get('/register/guru', [RegisterController::class, 'register_guru']);
+    Route::post('/register/guru/post', [RegisterController::class, 'guru']);
+    Route::get('/register/siswa', [RegisterController::class, 'register_siswa']);
+    Route::post('/register/siswa/post', [RegisterController::class, 'siswa']);
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/login', [AuthController::class, 'auth']);
+
+});
+
+

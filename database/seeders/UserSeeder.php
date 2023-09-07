@@ -25,6 +25,7 @@ class UserSeeder extends Seeder
         $user = User::create($guru);
 
         $dataguru = [
+            'nama' => 'd',
             'nip' => 6453468326,
             'user_id' => $user->id
         ];
@@ -41,6 +42,7 @@ class UserSeeder extends Seeder
 
         $datasiswa = [
             'user_id' => $user->id,
+            'nama' => 't',
             'nisn' => 76547635448,
             'kelas' => 'XII',
             'jurusan' => 'RPL'

@@ -5,17 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Guru extends Model
+class Kelas extends Model
 {
     use HasFactory;
-
-    public function kelas()
-    {
-        return $this->belongsToMany(Kelas::class);
+    public function user(){
+        return $this->belongsToMany(Guru::class);
     }
 
-    protected $table = 'guru';
+    protected $table = 'kelas';
     protected $fillable = [
-        'nip', 'nama', 'user_id'
+        'id', 'guru_id', 'nama', 'mapel', 'image'
     ];
 }

@@ -21,7 +21,7 @@ class AuthController extends Controller
         // $check_username = \DB::table('users');
         // dd($validate);
         if($check){
-           return redirect('/home');
+           return redirect('/kelas');
         }
         return redirect('/login')->with('notif', [
             'status' => false,

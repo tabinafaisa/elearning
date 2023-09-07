@@ -77,6 +77,13 @@
                                         </div>
                                     </div>
                                     <div class="sign__input-wrapper mb-25">
+                                        <h5>Nama</h5>
+                                        <div class="sign__input">
+                                            <input type="text" placeholder="Nama" name="nama">
+                                            <i class="fal fa-user"></i>
+                                        </div>
+                                    </div>
+                                    <div class="sign__input-wrapper mb-25">
                                         <h5>Username</h5>
                                         <div class="sign__input">
                                             <input type="text" placeholder="Username" name="username">

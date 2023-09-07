@@ -16,7 +16,6 @@ return new class extends Migration
             $table->unsignedBigInteger('guru_id');
             $table->unsignedBigInteger('kelas_id');
             $table->string('nama');
-            $table->string('mapel');
             $table->string('judul');
             $table->string('isi');
             $table->string('nama_file');

@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('kelas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('guru_id');
-            $table->unsignedBigInteger('siswa_id');
             $table->string('nama');
+            $table->string('mapel');
+            $table->string('image');
             $table->foreign('guru_id')->references('id')->on('guru')->onDelete('cascade');
-            $table->foreign('siswa_id')->references('id')->on('siswa')->onDelete('cascade');
             $table->timestamps();
         });
     }
