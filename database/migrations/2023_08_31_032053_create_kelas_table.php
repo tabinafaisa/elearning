@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('kelas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('guru_id');
+            $table->string('code')->unique();
             $table->string('nama');
             $table->string('mapel');
             $table->string('image');
