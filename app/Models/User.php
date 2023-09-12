@@ -18,6 +18,13 @@ class User extends Authenticatable
      * @var array<int, string>
      */
 
+     public function siswa() {
+        return $this->hasOne(Siswa::class);
+     }
+
+     public function guru() {
+        return $this->hasOne(Guru::class);
+     }
    
     protected $fillable = [
         'username',

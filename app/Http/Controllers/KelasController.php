@@ -15,7 +15,8 @@ class KelasController extends Controller
      * Display a listing of the resource.
      */
 
-    public function generateUniqueCode(){
+    public function generateUniqueCode()
+    {
 
         $characters = '0123456789QWERTYUIOPASDFGHJKLZXCVBNM';
         $charactersNumber = strlen($characters);
@@ -23,8 +24,8 @@ class KelasController extends Controller
 
         $code = '';
 
-        while (strlen($code) < 6){
-            $position = rand(0, $charactersNumber -1);
+        while (strlen($code) < 6) {
+            $position = rand(0, $charactersNumber - 1);
             $character  = $characters[$position];
             $code = $code . $character;
         }
@@ -34,7 +35,6 @@ class KelasController extends Controller
         }
 
         return $code;
-
     }
 
     public function index()
@@ -42,7 +42,7 @@ class KelasController extends Controller
         // $kelas = Kelas::join('users', 'kelas.user_id', '=', 'users.id')->get();
         // return redirect('/kelas', ['kelas' => $kelas]);
 
-        $kelass = Kelas::all();
+        $kelass = Kelas::select('kelas.*', 'guru.nama as nama_guru')->join('guru', 'kelas.guru_id', '=', 'guru.id')->get();
         return view('kelas.index', compact('kelass'));
     }
 
@@ -81,7 +81,7 @@ class KelasController extends Controller
         if ($request->has('kelas')) {
             $data->kelas()->attach($request->kelas);
         }
-        
+
         $kelas = Kelas::create($data);
         // return $kelas;
         return to_route('kelas.index')->with('success', 'berhasil membuat kelas');
@@ -100,9 +100,10 @@ class KelasController extends Controller
      */
     public function edit(string $id)
     {
-        $kelas = Kelas::find($id);
+        $kelas = Kelas::select('kelas.*', 'guru.nama as nama_guru')->join('guru', 'kelas.guru_id', '=', 'guru.id')->where('kelas.id', $id)->first();
+        $guru = Guru::all();
         // dd($kelas);
-        return view('kelas/edit', ['kelas' => $kelas]);
+        return view('kelas/edit', ['kelas' => $kelas, 'guru' => $guru]);
     }
 
     /**
@@ -110,18 +111,17 @@ class KelasController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        dd('tes');
-        $image = $request->file('image')->store('public/img');
-        $code = $this->generateUniqueCode();
-        $guru = Guru::where('user_id', $request->input('guru'))->first();
+        // dd('tes');
 
         $data = [
             'guru_id' => $request->guru,
-            'code' => $code,
             'nama' => $request->nama,
             'mapel' => $request->mapel,
-            'image' => $image,
         ];
+        if ($request->file('image')) {
+            $data['image'] = $request->file('image')->store('public/img');
+        }
+        // tes
 
         try {
             $kelas = Kelas::find($id)->update($data);

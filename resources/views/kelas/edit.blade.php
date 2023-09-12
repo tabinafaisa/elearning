@@ -24,7 +24,7 @@
                     <div class="col-xxl-6 offset-xxl-3 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
                         <div class="sign__wrapper white-bg">
                             <div class="sign__form">
-                                <form action="{{route('kelas.update', $kelas->id)}}" enctype="multipart/form-data">
+                                <form action="{{ url('/kelas/'. $kelas->id)}}" enctype="multipart/form-data" method="post">
                                     @csrf
                                     @method('PUT')
                                     <div class="sign__input-wrapper mb-25">
@@ -47,16 +47,24 @@
                                             <div class="country-select">
                                                 <select style="display: none;" name="guru">
                                                     <option value="">Pilih Guru</option>
-                                                    <option value="{{ isset($kelas['guru_id']) ? $kelas['guru_id'] : '' }}">
-                                                        {{ isset($kelas['guru_id']) ? $kelas['guru_id'] : '' }}</option>
+                                                    @foreach($guru as $value)
+                                                    @if(isset($kelas['guru_id']) && $kelas['guru_id'] == $value->id)
+                                                    <option value="{{ $value->id }}" selected>
+                                                        {{ $value->nama }}</option>
+                                                        @else
+                                                        <option value="{{ $value->id }}">
+                                                        {{ $value->nama }}</option>
+                                                        @endif
+                                                        @endforeach
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="sign__input-wrapper mb-10">
                                         <h5>Tambahkan Foto</h5>
+                                        <p>{{ isset($kelas['image']) ? explode('img/', $kelas['image'])[1] : '' }}</p>
                                         <input type="file" name="image"
-                                            value="{{ isset($kelas['image']) ? $kelas['image'] : '' }}">
+                                            value="">
                                     </div>
                                     <br>
                                     <div class="row">

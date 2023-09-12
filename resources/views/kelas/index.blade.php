@@ -3,7 +3,7 @@
     <main>
 
         <!-- slider area start -->
-        <section class="slider__area">
+        <section class="slider__area" id="beranda">
             <div class="slider__active swiper-container">
                 <div class="swiper-wrapper">
                     <div class="slider__item swiper-slide p-relative slider__height d-flex align-items-center z-index-1">
@@ -56,7 +56,7 @@
         <!-- slider area end -->
 
         <!-- features area start -->
-        <section class="course__area pt-115 pb-90 grey-bg-3">
+        <section class="course__area pt-115 pb-90 grey-bg-3" id="kelas">
             <div class="container">
                 <div class="row">
                     <div class="col-xxl-12">
@@ -143,7 +143,7 @@
                                                     <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
                                                         <div class="course__item-2 transition-3 white-bg mb-30 fix">
                                                             <div class="course__thumb-2 w-img fix">
-                                                                <a href="course-details.html">
+                                                                <a href="{{ url('/pkk') }}">
                                                                     <img src="{{ Storage::url($value->image) }}"
                                                                         alt="">
                                                                 </a>
@@ -157,20 +157,21 @@
                                                                     <div class="course__price-2">
                                                                         <div class="course__action-icon mr-5">
                                                                             <span>
-                                                                                    <a href="{{route('kelas.edit', $value->id)}}">
-                                                                                        <ion-icon
-                                                                                            name="create-outline"></ion-icon>
-                                                                                    </a >
+                                                                                <a
+                                                                                    href="{{ route('kelas.edit', $value->id) }}">
+                                                                                    <ion-icon
+                                                                                        name="create-outline"></ion-icon>
+                                                                                </a>
                                                                             </span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <h3 class="course__title-2">
-                                                                    <a href="course-details.html">{{ $value->nama }}</a>
+                                                                    <a href="{{ url('/pkk') }}">{{ $value->nama }}</a>
                                                                 </h3>
                                                                 <div
                                                                     class="course__bottom-2 d-flex align-items-center justify-content-between">
-                                                                    <h5>{{ $value->guru_id }}</h5>
+                                                                    <h5>{{ $value->nama_guru }}</h5>
                                                                 </div>
                                                             </div>
                                                         </div>

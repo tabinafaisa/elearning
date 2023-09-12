@@ -15,7 +15,7 @@ class Guru
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(auth()->user()->hak_akses == "guru"){
+        if(auth()->user()->hak_akses != "guru"){
             return redirect('/');
         }
 
