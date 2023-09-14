@@ -83,11 +83,6 @@
                                             <i class="fal fa-lock"></i>
                                         </div>
                                     </div>
-                                    <div class="sign__action d-sm-flex justify-content-between mb-30">
-                                        <div class="sign__forgot">
-                                            <a href="#">Forgot your password?</a>
-                                        </div>
-                                    </div>
                                     <button class="tp-btn  w-100"> <span></span> Sign In</button>
                                     <div class="sign__new text-center mt-20">
                                         <p>Don't have account? <a href="{{ url('/register') }}">Sign Up</a></p>

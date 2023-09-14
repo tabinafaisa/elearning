@@ -12,6 +12,10 @@ class Kelas extends Model
         return $this->belongsToMany(Guru::class);
     }
 
+    public function tugas(){
+        return $this->belongsTo(Tugas::class);
+    }
+
     protected $table = 'kelas';
     protected $fillable = [
         'guru_id', 'code', 'nama', 'mapel', 'image'

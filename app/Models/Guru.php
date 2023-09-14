@@ -23,4 +23,8 @@ class Guru extends Model
         return $this->belongsToMany(Kelas::class);
     }
 
+    public function tugas(){
+        return $this->belongsTo(Tugas::class);
+    }
+
 }

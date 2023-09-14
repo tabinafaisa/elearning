@@ -24,18 +24,20 @@ use App\Http\Controllers\ProfilController;
 //     return view('home/index');
 // });
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', [DashboardController::class, 'index']);
+    Route::get('/siswa', [DashboardController::class, 'index']);
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::get('/kelas/siswa', [KelassiswaController::class, 'index']);
     Route::post('/kelas/siswa', [KelassiswaController::class, 'checkcode']);
     Route::get('/profil', [ProfilController::class, 'index']);
     Route::get('/profil', [ProfilController::class, 'show']);
-    Route::post('/profil/{id}', [ProfilController::class, 'update'])->name('profil.update');
+    Route::post('/profil/{id}', [ProfilController::class, 'update']);
 });
 
 Route::middleware(['auth', 'guru'])->group(function () {
     Route::resource('/kelas', KelasController::class);
-    Route::get('/pkk', [TugasController::class, 'index']);
+    Route::get('/tugas/{kelas_id}', [TugasController::class, 'index']);
+    Route::get('/tugas/create/{kelas_id}', [TugasController::class, 'create']);
+    Route::resource('/tugas', TugasController::class);
 });
 
 Route::middleware(['guest'])->group(function () {

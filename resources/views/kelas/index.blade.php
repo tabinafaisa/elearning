@@ -13,14 +13,10 @@
                             <div class="row">
                                 <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-10 col-sm-10">
                                     <div class="slider__content p-relative z-index-1">
-                                        <span data-animation="fadeInUp" data-delay=".3s">Educal University</span>
-                                        <h2 class="slider__title" data-animation="fadeInUp" data-delay=".6s">Institution of
-                                            Higher Education</h2>
+                                        <span data-animation="fadeInUp" data-delay=".3s">Sekolah Menengah Kejuruan</span>
+                                        <h2 class="slider__title" data-animation="fadeInUp" data-delay=".6s">Sistem Manajemen Pembelajaran</h2>
                                         <p data-animation="fadeInUp" data-delay=".9s">We believe everyone should have the
                                             opportunity to create progress through technolog.</p>
-                                        <div class="slider__btn" data-animation="fadeInUp" data-delay="1.1s">
-                                            <a href="course-v1.html" class="tp-btn">Find Courses</a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -33,14 +29,10 @@
                             <div class="row">
                                 <div class="col-xxl-7 col-xl-8 col-lg-8 col-md-10 col-sm-10">
                                     <div class="slider__content p-relative z-index-1">
-                                        <span data-animation="fadeInUp" data-delay=".3s">Educal University</span>
-                                        <h2 class="slider__title" data-animation="fadeInUp" data-delay=".6s">Together We'll
-                                            Explore New Things</h2>
+                                        <span data-animation="fadeInUp" data-delay=".3s">Sekolah Menengah Kejuruan</span>
+                                        <h2 class="slider__title" data-animation="fadeInUp" data-delay=".6s">Temukan Pengalaman Baru Yang Lebih Menarik</h2>
                                         <p data-animation="fadeInUp" data-delay=".9s">We believe everyone should have the
                                             opportunity <br> to create progress through technolog.</p>
-                                        <div class="slider__btn" data-animation="fadeInUp" data-delay="1.1s">
-                                            <a href="course-v1.html" class="tp-btn">Find Courses</a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -110,24 +102,6 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="course__view">
-                                            <h4>Showing 1 - 6 of 84</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                                    <div class="course__sort d-flex justify-content-sm-end">
-                                        <div class="course__sort-inner">
-                                            <select>
-                                                <option>Default</option>
-                                                <option>Option 1</option>
-                                                <option>Option 2</option>
-                                                <option>Option 3</option>
-                                                <option>Option 4</option>
-                                                <option>Option 5</option>
-                                                <option>Option 6</option>
-                                            </select>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -143,7 +117,7 @@
                                                     <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
                                                         <div class="course__item-2 transition-3 white-bg mb-30 fix">
                                                             <div class="course__thumb-2 w-img fix">
-                                                                <a href="{{ url('/pkk') }}">
+                                                                <a href="{{ url('/tugas/' . $value->id) }}">
                                                                     <img src="{{ Storage::url($value->image) }}"
                                                                         alt="">
                                                                 </a>
@@ -167,7 +141,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <h3 class="course__title-2">
-                                                                    <a href="{{ url('/pkk') }}">{{ $value->nama }}</a>
+                                                                    <a href="{{ url('/tugas') }}">{{ $value->nama }}</a>
                                                                 </h3>
                                                                 <div
                                                                     class="course__bottom-2 d-flex align-items-center justify-content-between">
@@ -243,35 +217,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xxl-12">
-                                <div class="basic-pagination">
-                                    <nav>
-                                        <ul>
-                                            <li>
-                                                <a href="course-v2.html">
-                                                    <i class="far fa-angle-left"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="course-v2.html">1</a>
-                                            </li>
-                                            <li>
-                                                <span class="current">2</span>
-                                            </li>
-                                            <li>
-                                                <a href="course-v2.html">3</a>
-                                            </li>
-                                            <li>
-                                                <a href="course-v1.html">
-                                                    <i class="far fa-angle-right"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
                                 </div>
                             </div>
                         </div>

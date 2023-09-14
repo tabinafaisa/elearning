@@ -13,14 +13,12 @@ return new class extends Migration
     {
         Schema::create('tugas_siswa', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('guru_id');
             $table->unsignedBigInteger('kelas_id');
             $table->string('nama');
             $table->string('isi');
             $table->string('nama_file');
             $table->binary('binary_data');
             $table->foreign('kelas_id')->references('id')->on('kelas')->onDelete('cascade');
-            $table->foreign('guru_id')->references('id')->on('guru')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -85,84 +85,81 @@
                                     <button type="button" class="profile__edit-close-btn" data-bs-toggle="modal"
                                         data-bs-target="#course_enroll_modal"><i class="fa-light fa-xmark"></i></button>
                                 </div>
-                                <form action="{{ url('/profil') }}" method="post">
+                                <form action="{{ url('/profil/' . $user['id']) }}" method="post">
                                     @csrf
-                                    <input type="text" name="id" value="{{ isset($user['id']) ? $user['id'] : '' }}"
-                                        hidden>
-                            </div>">
-                            <div class="profile__edit-input">
-                                <p>NIP</p>
-                                <input type="text" placeholder="NIP"
-                                    value="{{ isset($guru['nip']) ? $guru['nip'] : '' }}">
+                                    <div class="profile__edit-input">
+                                        <p>NIP</p>
+                                        <input type="text" placeholder="NISN"
+                                            value="{{ isset($guru['nip']) ? $guru['nip'] : '' }}" name="nip">
+                                    </div>
+                                    <div class="profile__edit-input">
+                                        <p>Nama</p>
+                                        <input type="text" placeholder="Nama"
+                                            value="{{ isset($guru['nama']) ? $guru['nama'] : '' }}" name="nama">
+                                    </div>
+                                    <div class="profile__edit-input">
+                                        <p>Username</p>
+                                        <input type="text" placeholder="Username"
+                                            value="{{ isset($user['username']) ? $user['username'] : '' }}"
+                                            name="username">
+                                    </div>
+                                    <div class="profile__edit-input">
+                                        <button type="submit" class="tp-btn w-100">Update</button>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="profile__edit-input">
-                                <p>Nama</p>
-                                <input type="text" placeholder="Nama"
-                                    value="{{ isset($guru['nama']) ? $guru['nama'] : '' }}">
-                            </div>
-                            <div class="profile__edit-input">
-                                <p>Username</p>
-                                <input type="text" placeholder="Username"
-                                    value="{{ isset($user['username']) ? $user['username'] : '' }}">
-                            </div>
-                            <div class="profile__edit-input">
-                                <button type="submit" class="tp-btn w-100">Update</button>
-                            </div>
-                            </form>
                         </div>
                     </div>
                 </div>
-        </div>
-        @endif
-        @if (Auth::user()->hak_akses == 'siswa')
-            <div class="modal fade" id="profile_edit_modal" tabindex="-1" aria-labelledby="profile_edit_modal"
-                aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="profile__edit-wrapper">
-                            <div class="profile__edit-close">
-                                <button type="button" class="profile__edit-close-btn" data-bs-toggle="modal"
-                                    data-bs-target="#course_enroll_modal"><i class="fa-light fa-xmark"></i></button>
+            @endif
+            @if (Auth::user()->hak_akses == 'siswa')
+                <div class="modal fade" id="profile_edit_modal" tabindex="-1" aria-labelledby="profile_edit_modal"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="profile__edit-wrapper">
+                                <div class="profile__edit-close">
+                                    <button type="button" class="profile__edit-close-btn" data-bs-toggle="modal"
+                                        data-bs-target="#course_enroll_modal"><i class="fa-light fa-xmark"></i></button>
+                                </div>
+                                <form action="{{ url('/profil/' . $user['id']) }}" method="post">
+                                    @csrf
+                                    <div class="profile__edit-input">
+                                        <p>NISN</p>
+                                        <input type="text" placeholder="NISN"
+                                            value="{{ isset($siswa['nisn']) ? $siswa['nisn'] : '' }}" name="nisn">
+                                    </div>
+                                    <div class="profile__edit-input">
+                                        <p>Nama</p>
+                                        <input type="text" placeholder="Nama"
+                                            value="{{ isset($siswa['nama']) ? $siswa['nama'] : '' }}" name="nama">
+                                    </div>
+                                    <div class="profile__edit-input">
+                                        <p>Username</p>
+                                        <input type="text" placeholder="Username"
+                                            value="{{ isset($user['username']) ? $user['username'] : '' }}"
+                                            name="username">
+                                    </div>
+                                    <div class="profile__edit-input">
+                                        <p>Kelas</p>
+                                        <input type="text" placeholder="Kelas"
+                                            value="{{ isset($siswa['kelas']) ? $siswa['kelas'] : '' }}" name="kelas">
+                                    </div>
+                                    <div class="profile__edit-input">
+                                        <p>Jurusan</p>
+                                        <input type="text" placeholder="Jurusan"
+                                            value="{{ isset($siswa['jurusan']) ? $siswa['jurusan'] : '' }}"
+                                            name="jurusan">
+                                    </div>
+                                    <div class="profile__edit-input">
+                                        <button type="submit" class="tp-btn w-100">Update</button>
+                                    </div>
+                                </form>
                             </div>
-                            <form action="{{ url('/profil/' . $user['id']) }}" method="post">
-                                @csrf
-                                {{-- @method('PUT') --}}
-                                {{-- <input type="text" name="id" value="{{ isset($user['id']) ? $user['id'] : '' }}"
-                                    hidden> --}}
-                                <div class="profile__edit-input">
-                                    <p>NISN</p>
-                                    <input type="text" placeholder="NISN"
-                                        value="{{ isset($siswa['nisn']) ? $siswa['nisn'] : '' }}" name="nisn">
-                                </div>
-                                <div class="profile__edit-input">
-                                    <p>Nama</p>
-                                    <input type="text" placeholder="Nama"
-                                        value="{{ isset($siswa['nama']) ? $siswa['nama'] : '' }}" name="nama">
-                                </div>
-                                <div class="profile__edit-input">
-                                    <p>Username</p>
-                                    <input type="text" placeholder="Username"
-                                        value="{{ isset($user['username']) ? $user['username'] : '' }}" name="username">
-                                </div>
-                                <div class="profile__edit-input">
-                                    <p>Kelas</p>
-                                    <input type="text" placeholder="Kelas"
-                                        value="{{ isset($siswa['kelas']) ? $siswa['kelas'] : '' }}" name="kelas">
-                                </div>
-                                <div class="profile__edit-input">
-                                    <p>Jurusan</p>
-                                    <input type="text" placeholder="Jurusan"
-                                        value="{{ isset($siswa['jurusan']) ? $siswa['jurusan'] : '' }}" name="jurusan">
-                                </div>
-                                <div class="profile__edit-input">
-                                    <button type="submit" class="tp-btn w-100">Update</button>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>
-            </div>
-        @endif
+            @endif
         </div>
 
     </main>

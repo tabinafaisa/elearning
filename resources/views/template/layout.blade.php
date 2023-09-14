@@ -25,6 +25,11 @@
     <link rel="stylesheet" href="{{ asset('/') }}css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     @stack('css')
+    <style>
+        .logo {
+            color: cornflowerblue;
+        }
+    </style>
 </head>
 
 <body>
@@ -61,11 +66,7 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-6 col-6">
-                            <div class="logo">
-                                <a href="index.html">
-                                    <img src="{{ asset('/') }}img/logo/logo.png" alt="logo">
-                                </a>
-                            </div>
+                                    <h1 class="logo">APBM</h1>
                         </div>
                         <div class="col-xxl-7 col-xl-7 col-lg-8 d-none d-lg-block">
                             <div class="main-menu">
