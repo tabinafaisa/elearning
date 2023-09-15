@@ -14,7 +14,7 @@
                                 <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-10 col-sm-10">
                                     <div class="slider__content p-relative z-index-1">
                                         <span data-animation="fadeInUp" data-delay=".3s">Sekolah Menengah Kejuruan</span>
-                                        <h2 class="slider__title" data-animation="fadeInUp" data-delay=".6s">Sistem Manajemen Pembelajaran</h2>
+                                        <h2 class="slider__title" data-animation="fadeInUp" data-delay=".6s">APLIKASI BELAJAR MENGAJAR</h2>
                                         <p data-animation="fadeInUp" data-delay=".9s">We believe everyone should have the
                                             opportunity to create progress through technolog.</p>
                                     </div>
@@ -101,9 +101,29 @@
                                                             size="large"></ion-icon></a>
                                                 </li>
                                             </ul>
+                                            <div class="header__search w-100 d-none d-xl-block">
+                                    <form action="{{ url('/search') }}" method="get">
+                                        <div class="header__search-input">
+                                            <input type="text" placeholder="Search...">
+                                            <button class="header__search-btn" name="search"><svg width="18" height="18"
+                                                    viewBox="0 0 18 18" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M8.11117 15.2222C12.0385 15.2222 15.2223 12.0385 15.2223 8.11111C15.2223 4.18375 12.0385 1 8.11117 1C4.18381 1 1.00006 4.18375 1.00006 8.11111C1.00006 12.0385 4.18381 15.2222 8.11117 15.2222Z"
+                                                        stroke="#031220" stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M17 17L13.1334 13.1333" stroke="#031220"
+                                                        stroke-width="2" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
                                         </div>
                                     </div>
                                 </div>
+                                
                             </div>
                         </div>
                         <div class="row">
@@ -141,7 +161,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <h3 class="course__title-2">
-                                                                    <a href="{{ url('/tugas') }}">{{ $value->nama }}</a>
+                                                                    <a href="{{ url('/tugas/' . $value->id) }}">{{ $value->nama }}</a>
                                                                 </h3>
                                                                 <div
                                                                     class="course__bottom-2 d-flex align-items-center justify-content-between">

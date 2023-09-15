@@ -24,26 +24,26 @@
                     <div class="col-xxl-6 offset-xxl-3 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
                         <div class="sign__wrapper white-bg">
                             <div class="sign__form">
-                                <form action="{{ url('/kelas/'. $kelas->id)}}" enctype="multipart/form-data" method="post">
+                                <form action="{{ url('/kelas/edit/'. $kelas->id)}}" enctype="multipart/form-data" method="post">
                                     @csrf
                                     @method('PUT')
                                     <div class="sign__input-wrapper mb-25">
                                         <h5>Nama Kelas</h5>
-                                        <div class="sign__input">
+                                        <div class="profile__edit-input">
                                             <input type="text" placeholder="Nama" name="nama"
                                                 value="{{ isset($kelas['nama']) ? $kelas['nama'] : '' }}">
                                         </div>
                                     </div>
                                     <div class="sign__input-wrapper mb-25">
                                         <h5>Mata Pelajaran</h5>
-                                        <div class="sign__input">
+                                        <div class="profile__edit-input">
                                             <input type="text" placeholder="Mata Pelajaran" name="mapel"
                                                 value="{{ isset($kelas['mapel']) ? $kelas['mapel'] : '' }}">
                                         </div>
                                     </div>
                                     <div class="sign__input-wrapper mb-25">
                                         <h5>Nama Guru</h5>
-                                        <div class="col-md-12">
+                                        
                                             <div class="country-select">
                                                 <select style="display: none;" name="guru">
                                                     <option value="">Pilih Guru</option>
@@ -58,7 +58,6 @@
                                                         @endforeach
                                                 </select>
                                             </div>
-                                        </div>
                                     </div>
                                     <div class="sign__input-wrapper mb-10">
                                         <h5>Tambahkan Foto</h5>

@@ -50,16 +50,18 @@
                                         </span>
                                     </div>
                                     <div class="event__more ml-30">
-                                        <a href="event-details.html" class="tp-btn-5 tp-btn-7">View Events </a>
+                                        <a href="{{ url('/tugas/detail/' . $value->id) }}" class="tp-btn-5 tp-btn-7">Selengkapnya </a>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
+                        @if(Auth::user()->hak_akses == 'guru')
                         <div
                             class="event__item white-bg mb-10 transition-3 p-relative d-lg-flex align-items-center justify-content-center">
-                            <a href="{{ url('/tugas/create/' . $kelas->id) }}" class="tp-btn-5 tp-btn-7">Tambah tugas </a>
+                            <a href="{{ url('/tugas/create/' . $value->kelas_id) }}" class="tp-btn-5 tp-btn-7">Tambah tugas </a>
 
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>

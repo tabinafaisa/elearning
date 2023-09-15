@@ -138,4 +138,10 @@ class KelasController extends Controller
     {
         //
     }
+
+    public function search(Request $request){
+        $kodeinput = $request->input('search');
+        $kelas = Kelas::where('nama', 'LIKE', '%'. $kodeinput . '%')->get();
+        return view('/kelas/index', ['kelas' => $kelas, 'kodeinput' => $kodeinput]);
+    }
 }

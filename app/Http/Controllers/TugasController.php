@@ -56,9 +56,11 @@ class TugasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($kelas_id)
     {
-        //
+        
+        $tugas = Tugas::where('id', $kelas_id)->get();
+        return view('tugas/detail', [ 'tugas' => $tugas ]);
     }
 
     /**
