@@ -15,7 +15,7 @@
                 <div class="row">
                     <div class="col-xxl-8 offset-xxl-2 col-xl-8 offset-xl-2">
                         <div class="section__title-wrapper text-center mb-55">
-                            <h2 class="section__title">Tambah tugas {{$kelas->nama}}</h2>
+                            <h2 class="section__title">Kirimkan Tugas</h2>
                         </div>
                     </div>
                 </div>
@@ -23,9 +23,9 @@
                     <div class="col-xxl-6 offset-xxl-3 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
                         <div class="sign__wrapper white-bg">
                             <div class="sign__form">
-                                <form action="{{ url('/tugas') }}" method="post" enctype="multipart/form-data">
+                                <form action="{{ url('/tugas/detail/') }}" method="post" enctype="multipart/form-data">
                                     @csrf
-                                    <input type="hidden" name="kelas_id" value="{{ $kelas->id }}">
+                                    {{-- <input type="hidden" name="kelas_id" value="{{ $kelas->id }}"> --}}
                                     <div class="sign__input-wrapper mb-25">
                                         <h5>Judul</h5>
                                         <div class="checkout-form-list">
@@ -41,12 +41,6 @@
                                         <h5>File</h5>
                                         <div class="checkout-form-list">
                                             <input type="file" name="file_tugas">
-                                        </div>
-                                    </div>
-                                    <div class="sign__input-wrapper mb-25">
-                                        <h5>Deadline</h5>
-                                        <div class="checkout-form-list">
-                                            <input type="datetime-local" name="deadline">
                                         </div>
                                     </div>
                                     <br>

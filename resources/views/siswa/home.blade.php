@@ -161,12 +161,13 @@
                                                                     </div>
                                                                 </div>
                                                                 <h3 class="course__title-2">
-                                                                    <a href="{{ url('/tugas/' . $kelas->id) }}">{{ $kelas->nama }}</a>
+                                                                    <a
+                                                                        href="{{ url('/tugas/' . $kelas->id) }}">{{ $kelas->nama }}</a>
                                                                 </h3>
                                                                 <div
                                                                     class="course__bottom-2 d-flex align-items-center justify-content-between">
-                                                                    
-                                                                   <h5>{{ $datakelas->nama_guru }}</h5>
+
+                                                                    <h5>{{ $datakelas->nama_guru }}</h5>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -735,3 +736,18 @@
         </div> --}}
     </main>
 @endsection
+@push('js')
+    <script>
+        $(document).ready(function() {
+            $.toastr.config({
+                time: 3000
+            });
+            isError = `{{ Session::has('notif') ? Session::get('notif')['msg'] : '' }}`;
+            if (isError != "") {
+                $.toastr.warning('Kelas Tidak Ditemukan', {
+                    position: 'top-right'
+                });
+            }
+        });
+    </script>
+@endpush

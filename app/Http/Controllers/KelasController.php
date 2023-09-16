@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Guru;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Auth;
 
 class KelasController extends Controller
 {
@@ -42,7 +43,7 @@ class KelasController extends Controller
         // $kelas = Kelas::join('users', 'kelas.user_id', '=', 'users.id')->get();
         // return redirect('/kelas', ['kelas' => $kelas]);
 
-        $kelass = Kelas::select('kelas.*', 'guru.nama as nama_guru')->join('guru', 'kelas.guru_id', '=', 'guru.id')->get();
+        $kelass = Kelas::select('kelas.*', 'guru.nama as nama_guru')->join('guru', 'kelas.guru_id', '=', 'guru.id')->where('guru.user_id', Auth::user()->id)->get();
         return view('kelas.index', compact('kelass'));
     }
 
@@ -92,7 +93,8 @@ class KelasController extends Controller
      */
     public function show(string $id)
     {
-        return view('kelas/edit');
+        $kelas = Kelas::find($id);
+        return view('kelas/detail', ['kelas' => $kelas]);
     }
 
     /**
@@ -139,9 +141,10 @@ class KelasController extends Controller
         //
     }
 
-    public function search(Request $request){
+    public function search(Request $request)
+    {
         $kodeinput = $request->input('search');
-        $kelas = Kelas::where('nama', 'LIKE', '%'. $kodeinput . '%')->get();
+        $kelas = Kelas::where('nama', 'LIKE', '%' . $kodeinput . '%')->get();
         return view('/kelas/index', ['kelas' => $kelas, 'kodeinput' => $kodeinput]);
     }
 }

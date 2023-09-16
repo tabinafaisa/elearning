@@ -8,6 +8,7 @@ use App\Http\Controllers\KelasController;
 use App\Http\Controllers\TugasController;
 use App\Http\Controllers\KelassiswaController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\TugassiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tugas/create/{kelas_id}', [TugasController::class, 'create']);
     Route::get('/tugas/detail/{id}', [TugasController::class, 'show']);
     Route::resource('/tugas', TugasController::class);
+    Route::get('/siswa/tugas', [TugassiswaController::class, 'index']);
 });
 
 Route::middleware(['auth', 'guru'])->group(function () {
@@ -52,5 +54,3 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'auth']);
 });
-
-

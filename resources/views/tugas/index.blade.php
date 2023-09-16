@@ -58,7 +58,7 @@
                         @if(Auth::user()->hak_akses == 'guru')
                         <div
                             class="event__item white-bg mb-10 transition-3 p-relative d-lg-flex align-items-center justify-content-center">
-                            <a href="{{ url('/tugas/create/' . $value->kelas_id) }}" class="tp-btn-5 tp-btn-7">Tambah tugas </a>
+                            <a href="{{ url('/tugas/create/' . $kelas->id) }}" class="tp-btn-5 tp-btn-7">Tambah tugas </a>
 
                         </div>
                         @endif

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Guru;
 use App\Models\Siswa;
 use App\Models\User;
+use App\Models\Kelas;
 
 class UserSeeder extends Seeder
 {
@@ -30,7 +31,7 @@ class UserSeeder extends Seeder
             'user_id' => $user->id
         ];
 
-        Guru::create($dataguru);
+        $id_guru = Guru::create($dataguru);
 
         $siswa = [
             'username' => 'tabina',
@@ -42,12 +43,23 @@ class UserSeeder extends Seeder
 
         $datasiswa = [
             'user_id' => $user->id,
-            'nama' => 't',
+            'nama' => 'ina',
             'nisn' => 76547635448,
             'kelas' => 'XII',
             'jurusan' => 'RPL'
         ];
 
         Siswa::create($datasiswa);
+
+        $kelas = [
+            'guru_id' => $id_guru->id,
+            'code' => 'EWIN38',
+            'nama' => '12 RPL 1',
+            'mapel' => 'Agama',
+            'image' => 'public/img/Qyy16QfNAZdHmzjFLsq00mm0Z0DldiSNHV89ZxnZ.png'
+        ];
+
+        Kelas::create($kelas);
+        
     }
 }
