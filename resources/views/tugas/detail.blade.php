@@ -27,12 +27,13 @@
                               </div>
                            </div>
                         </div>
+                        @if(Auth::user()->hak_akses == 'siswa')
                         <div
                             class="event__item white-bg mb-10 transition-3 p-relative d-lg-flex align-items-center justify-content-center">
-                            <a href="{{ url('/tugas/siswa') }}" class="tp-btn-5 tp-btn-7">Tambahkan</a>
+                            <a href="{{ url('/tugas/siswa/create/' . $siswa->id) }}" class="tp-btn-5 tp-btn-7">Tambahkan</a>
 
                         </div>
-                        
+                        @endif
                      </div>
                   </div>
                   
@@ -40,7 +41,6 @@
             </div>
          </section>
          @endforeach
-
       </main>
 
 @endsection

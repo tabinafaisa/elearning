@@ -9,6 +9,8 @@ use App\Models\User;
 use App\Models\Guru;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Tugas;
+use App\Models\Siswa;
 
 class KelasController extends Controller
 {
@@ -94,7 +96,8 @@ class KelasController extends Controller
     public function show(string $id)
     {
         $kelas = Kelas::find($id);
-        return view('kelas/detail', ['kelas' => $kelas]);
+        $tugas = Tugas::all();
+        return view('tugas/index', ['kelas' => $kelas, 'tugas' => $tugas]);
     }
 
     /**

@@ -10,6 +10,6 @@ class Tugassiswa extends Model
     use HasFactory;
     protected $table = 'tugas_siswa';
     protected $fillable = [
-        'kelas_id', 'siswa_id', 'deskripsi', 'binary_data'
+        'tugas_id', 'siswa_id', 'deskripsi', 'binary_data'
     ];
 }

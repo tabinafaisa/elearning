@@ -23,28 +23,24 @@
                     <div class="col-xxl-6 offset-xxl-3 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
                         <div class="sign__wrapper white-bg">
                             <div class="sign__form">
-                                <form action="{{ url('/tugas/detail/') }}" method="post" enctype="multipart/form-data">
+                                <form action="{{ url('/tugas/siswa/detail/' . $tugassiswa->id) }}" method="post" enctype="multipart/form-data">
                                     @csrf
-                                    {{-- <input type="hidden" name="kelas_id" value="{{ $kelas->id }}"> --}}
-                                    <div class="sign__input-wrapper mb-25">
-                                        <h5>Judul</h5>
-                                        <div class="checkout-form-list">
-                                            <input type="text" name="judul">
+                                    <input type="hidden" name="siswa_id" value="{{ $siswa->id }}">
+                                    <input type="hidden" name="tugas_id" value="{{ $tugas->id }}">
+                                        <div class="sign__input-wrapper mb-25">
+                                            <h5>Deskripsi</h5>
+                                            <div class="contact__form-input">
+                                                <textarea name="deskripsi"></textarea>
+                                            </div>
                                         </div>
-                                    <div class="sign__input-wrapper mb-25">
-                                        <h5>Deskripsi</h5>
-                                        <div class="contact__form-input">
-                                            <textarea name="deskripsi"></textarea>
+                                        <div class="sign__input-wrapper mb-25">
+                                            <h5>File</h5>
+                                            <div class="checkout-form-list">
+                                                <input type="file" name="file_tugas">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="sign__input-wrapper mb-25">
-                                        <h5>File</h5>
-                                        <div class="checkout-form-list">
-                                            <input type="file" name="file_tugas">
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <button class="tp-btn  w-100"> <span></span>Tambahkan</button>
+                                        <br>
+                                        <button class="tp-btn  w-100" id="addtugas"> <span></span>Tambahkan</button>
                                 </form>
                             </div>
                         </div>

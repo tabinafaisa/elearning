@@ -37,7 +37,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tugas/create/{kelas_id}', [TugasController::class, 'create']);
     Route::get('/tugas/detail/{id}', [TugasController::class, 'show']);
     Route::resource('/tugas', TugasController::class);
-    Route::get('/siswa/tugas', [TugassiswaController::class, 'index']);
+    Route::get('/tugas/siswa/create/{id}', [TugassiswaController::class, 'index']);
+    Route::post('/tugas/siswa/detail/{id}', [TugassiswaController::class, 'create']);
 });
 
 Route::middleware(['auth', 'guru'])->group(function () {

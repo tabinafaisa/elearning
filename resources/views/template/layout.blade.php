@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="{{ asset('/') }}css/spacing.css">
     <link rel="stylesheet" href="{{ asset('/') }}css/style.css">
     <link rel="stylesheet" href="{{ asset('/') }}js/toastr/css/toastr.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     @stack('css')
     <style>
@@ -67,7 +68,7 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-xxl-2 col-xl-2 col-lg-2 col-md-6 col-6">
-                                    <h1 class="logo">APBM</h1>
+                            <h1 class="logo">APBM</h1>
                         </div>
                         <div class="col-xxl-7 col-xl-7 col-lg-8 d-none d-lg-block">
                             <div class="main-menu">
@@ -93,7 +94,7 @@
                         </div>
                         <div class="col-xxl-3 col-xl-3 col-lg-2 col-md-6 col-6">
                             <div class="header__bottom-right d-flex justify-content-end align-items-center pl-30">
-                                
+
                                 <div class="header__hamburger ml-50 d-xl-none">
                                     <button type="button" data-bs-toggle="modal" data-bs-target="#offcanvasmodal"
                                         class="hamurger-btn">
@@ -113,8 +114,7 @@
 
     <!-- offcanvas area start -->
     <div class="offcanvas__area">
-        <div class="modal fade" id="offcanvasmodal" tabindex="-1" aria-labelledby="offcanvasmodal"
-            aria-hidden="true">
+        <div class="modal fade" id="offcanvasmodal" tabindex="-1" aria-labelledby="offcanvasmodal" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="offcanvas__wrapper">
@@ -244,6 +244,9 @@
     <script src="{{ asset('/') }}js/ajax-form.js"></script>
     <script src="{{ asset('/') }}js/main.js"></script>
     <script src="{{ asset('/') }}js/toastr/js/toastr.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

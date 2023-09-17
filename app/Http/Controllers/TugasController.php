@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Kelas;
 use App\Models\Tugas;
+use App\Models\Siswa;
 
 class TugasController extends Controller
 {
@@ -56,11 +57,11 @@ class TugasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($kelas_id)
+    public function show($id)
     {
-        
-        $tugas = Tugas::where('id', $kelas_id)->get();
-        return view('tugas/detail', [ 'tugas' => $tugas ]);
+        $siswa = Siswa::find($id);
+        $tugas = Tugas::where('id', $id)->get();
+        return view('tugas/detail', [ 'tugas' => $tugas, 'siswa' => $siswa]);
     }
 
     /**
