@@ -26,7 +26,7 @@
                                                 Open File</button>
                                         </form>
                                         @else
-                                        <a href="{{File::files(public_path(explode('public/', $extFile)[1]))}}" target="_blank" class="teacher__follow-btn">
+                                        <a href="{{url('/') .'/'. $extFile}}" target="_blank" class="teacher__follow-btn">
                                                 Open File</a>
                                         @endif
                                     </div>
