@@ -17,21 +17,21 @@
                                         <div class="postbox__text mb-40">
                                             <p>{{ $value->deskripsi }}</p>
                                         </div>
-                                        <div class="postbox__quote grey-bg-2 mb-45 p-relative fix">
+                                        {{-- <div class="postbox__quote grey-bg-2 mb-45 p-relative fix">
                                             <img class="quote" src="assets/img/blog/quote-1.png" alt="">
                                             <blockquote>
                                                 <p>After I started learning design with Quillow, I realized that I had
                                                     Improved to very advanced levels.</p>
                                                 <h4>Chris Collins</h4>
                                             </blockquote>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                                 @if (Auth::user()->hak_akses == 'siswa')
                                     <div
                                         class="event__item white-bg mb-10 transition-3 p-relative d-lg-flex align-items-center justify-content-center">
-                                        <a href="{{ url('/tugas/siswa/create/' . $siswa->id) }}"
-                                            class="tp-btn-5 tp-btn-7">Tambahkan</a>
+                                        <a href="{{ url('/tugas/siswa/create/' . $value->id) }}"
+                                            class="tp-btn-5 tp-btn-7">Kerjakan Tugas</a>
                                     </div>
                                 @endif
                             </div>

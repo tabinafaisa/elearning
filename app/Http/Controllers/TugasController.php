@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Kelas;
 use App\Models\Tugas;
 use App\Models\Siswa;
+use Illuminate\Support\Facades\Auth;
 
 class TugasController extends Controller
 {
@@ -51,7 +52,6 @@ class TugasController extends Controller
             return redirect()->back()->with('notif', ['status' => false, 'msg' => 'gagal menyimpan data']);
         }
         return redirect(url('/tugas/' . $request->kelas_id))->with('notif', ['status' => true, 'msg' => 'berhasil menyimpan data']);
-        
     }
 
     /**
@@ -59,9 +59,8 @@ class TugasController extends Controller
      */
     public function show($id)
     {
-        $siswa = Siswa::find($id);
         $tugas = Tugas::where('id', $id)->get();
-        return view('tugas/detail', [ 'tugas' => $tugas, 'siswa' => $siswa]);
+        return view('tugas/detail', ['tugas' => $tugas]);
     }
 
     /**

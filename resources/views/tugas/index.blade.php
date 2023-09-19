@@ -38,7 +38,7 @@
                                     <div class="event__content">
 
                                         <h3 class="event__title">
-                                            <a href="event-details.html">{{ $value->judul }}</a>
+                                            {{ $value->judul }}
                                         </h3>
 
 
@@ -70,7 +70,9 @@
                                         <form action="{{ url('delete/' . $kelas->id . '/' . $value->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
+                                            @if(Auth::user()->hak_akses == 'guru')
                                             <button class="btn btn-outline-danger">Hapus</button>
+                                            @endif
                                         </form>
                                     </div>
                                 </div>

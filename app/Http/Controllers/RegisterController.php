@@ -35,10 +35,11 @@ class RegisterController extends Controller
         ];
 
         $createguru = Guru::create($guru);
-        return($createguru);
+        return redirect(url('login'));
     }
 
-    public function siswa(Request $request) {
+    public function siswa(Request $request)
+    {
         $validate = $request->validate([
             'nisn' => 'required|unique:siswa,nisn',
             'nama' => 'required',
@@ -65,7 +66,7 @@ class RegisterController extends Controller
         ];
 
         $createsiswa = Siswa::create($siswa);
-        return ($createsiswa);
+        return redirect(url('login'));
     }
     public function register()
     {

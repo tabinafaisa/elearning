@@ -2,6 +2,12 @@
 @section('content')
     <main>
         @foreach ($siswa as $value)
+        @php 
+        $extension = explode('.', $value->binary_data);
+        if(end($extension) == 'pdf'){
+            $pdf = $value->binary_data;
+        }
+        @endphp
             <section class="teacher__area pt-120 pb-110">
                 <div class="container">
                     <div class="row">
@@ -36,8 +42,14 @@
                                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <img src="{{ Storage::url($value->binary_data) }}" alt="File"
-                                    style="width: 100%; height: auto;">
+                                @if(!isset($pdf))
+                                    <img src="{{ Storage::url($value->binary_data) }}" alt="File"
+                                        style="width: 100%; height: auto;">
+                                @else
+                                    <div class="pdfviewer">
+
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -46,3 +58,17 @@
         @endforeach
     </main>
 @endsection
+@push('js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+<script>
+    let pdf = `{{isset($pdf)?$pdf: ''}}`;
+    if(pdf != ''){
+        const options = {
+            width: 960,
+            height: 650,
+        };
+        $('.pdfviewer').pdfViewer(pdf, options);
+    }
+    
+</script>
+@endpush

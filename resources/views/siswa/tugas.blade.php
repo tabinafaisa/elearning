@@ -23,7 +23,7 @@
                     <div class="col-xxl-6 offset-xxl-3 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
                         <div class="sign__wrapper white-bg">
                             <div class="sign__form">
-                                <form action="{{ url('/tugas/siswa/detail/' . $tugassiswa->id) }}" method="post" enctype="multipart/form-data">
+                                <form action="{{ url('/tugas/siswa/detail') }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <input type="hidden" name="siswa_id" value="{{ $siswa->id }}">
                                     <input type="hidden" name="tugas_id" value="{{ $tugas->id }}">

@@ -68,7 +68,7 @@
                                 @if (Session::has('notif'))
                                     <div class="alert alert-danger">{{ Session::get('notif')['msg'] }}</div>
                                 @endif
-                                <form action="{{ url('/login') }}" method="post">
+                                <form action="{{ url('/register/guru') }}" method="post">
                                     @csrf
                                     <div class="sign__input-wrapper mb-25">
                                         <h5>NIP</h5>
