@@ -4,8 +4,8 @@
         @foreach ($siswa as $value)
         @php 
         $extension = explode('.', $value->binary_data);
-        if(end($extension) == 'pdf'){
-            $pdf = $value->binary_data;
+        if(end($extension) != 'img'){
+            $extFile = $value->binary_data;
         }
         @endphp
             <section class="teacher__area pt-120 pb-110">
@@ -18,12 +18,17 @@
                                         <h4>{{ $value->nama_siswa }}</h4>
                                     </div>
                                     <div class="teacher__follow mb-5">
+                                        @if(!isset($extFile))
                                         <form action="#fileModal">
                                             @csrf
                                             <button type="button" class="teacher__follow-btn" data-toggle="modal"
                                                 data-target="#fileModal">
                                                 Open File</button>
                                         </form>
+                                        @else
+                                        <a href="{{File::files(public_path(explode('public/', $extFile)[1]))}}" target="_blank" class="teacher__follow-btn">
+                                                Open File</a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -42,13 +47,9 @@
                                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                @if(!isset($pdf))
+                                @if(!isset($extFile))
                                     <img src="{{ Storage::url($value->binary_data) }}" alt="File"
-                                        style="width: 100%; height: auto;">
-                                @else
-                                    <div class="pdfviewer">
-
-                                    </div>
+                                        style="width: 100%; height: auto;">    
                                 @endif
                             </div>
                         </div>
@@ -58,17 +59,3 @@
         @endforeach
     </main>
 @endsection
-@push('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
-<script>
-    let pdf = `{{isset($pdf)?$pdf: ''}}`;
-    if(pdf != ''){
-        const options = {
-            width: 960,
-            height: 650,
-        };
-        $('.pdfviewer').pdfViewer(pdf, options);
-    }
-    
-</script>
-@endpush
