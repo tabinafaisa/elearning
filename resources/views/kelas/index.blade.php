@@ -3,19 +3,18 @@
     <main>
 
         <!-- slider area start -->
-        <section class="slider__area" id="beranda">
+                <section class="slider__area" id="beranda">
             <div class="slider__active swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="slider__item swiper-slide p-relative slider__height d-flex align-items-center z-index-1">
+                <div class="swiper-wrapper" style="height: 100vh">
+                    <div class="slider__item swiper-slide p-relative slider__height d-flex align-items-center z-index-1" style="height: 100vh">
                         <div class="slider__bg slider__overlay include-bg"
-                            data-background="{{ asset('/') }}img/slider/slider-1.jpg"></div>
-                        <div class="container">
+                            data-background="{{ asset('/') }}img/slider/slider-1.jpg" style="height: 100vh"></div>
+                        <div class="container" style="height: 100vh">
                             <div class="row">
                                 <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-10 col-sm-10">
                                     <div class="slider__content p-relative z-index-1">
                                         <span data-animation="fadeInUp" data-delay=".3s">Sekolah Menengah Kejuruan</span>
-                                        <h2 class="slider__title" data-animation="fadeInUp" data-delay=".6s">APLIKASI
-                                            BELAJAR MENGAJAR</h2>
+                                        <h2 class="slider__title" data-animation="fadeInUp" data-delay=".6s">APLIKASI BELAJAR MENGAJAR</h2>
                                         <p data-animation="fadeInUp" data-delay=".9s">We believe everyone should have the
                                             opportunity to create progress through technolog.</p>
                                     </div>
@@ -23,16 +22,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="slider__item swiper-slide p-relative slider__height d-flex align-items-center z-index-1">
+                    <div class="slider__item swiper-slide p-relative slider__height d-flex align-items-center z-index-1" style="height: 100vh">
                         <div class="slider__bg slider__overlay include-bg"
-                            data-background="{{ asset('/') }}img/slider/slider-2.jpg"></div>
-                        <div class="container">
+                            data-background="{{ asset('/') }}img/slider/slider-2.jpg" style="height: 100vh"></div>
+                        <div class="container" style="height: 100vh">
                             <div class="row">
                                 <div class="col-xxl-7 col-xl-8 col-lg-8 col-md-10 col-sm-10">
                                     <div class="slider__content p-relative z-index-1">
                                         <span data-animation="fadeInUp" data-delay=".3s">Sekolah Menengah Kejuruan</span>
-                                        <h2 class="slider__title" data-animation="fadeInUp" data-delay=".6s">Temukan
-                                            Pengalaman Baru Yang Lebih Menarik</h2>
+                                        <h2 class="slider__title" data-animation="fadeInUp" data-delay=".6s">Temukan hal baru yang lebih menarik</h2>
                                         <p data-animation="fadeInUp" data-delay=".9s">We believe everyone should have the
                                             opportunity <br> to create progress through technolog.</p>
                                     </div>
@@ -41,6 +39,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="main-slider-paginations">
                     <button class="slider-button-next"><i class="fa-regular fa-arrow-right"></i></button>
                     <button class="slider-button-prev"><i class="fa-regular fa-arrow-left"></i></button>

@@ -34,19 +34,19 @@
                                 @endif
                                 <form action="{{ route('kelas.store') }}" method="post" enctype="multipart/form-data">
                                     @csrf
-                                    <div class="sign__input-wrapper mb-25">
+                                    <div class="profile__edit-input">
                                         <h5>Nama Kelas</h5>
                                         <div class="sign__input">
                                             <input type="text" placeholder="Nama" name="nama">
                                         </div>
                                     </div>
-                                    <div class="sign__input-wrapper mb-25">
+                                    <div class="profile__edit-input">
                                         <h5>Mata Pelajaran</h5>
                                         <div class="sign__input">
                                             <input type="text" placeholder="Mata Pelajaran" name="mapel">
                                         </div>
                                     </div>
-                                    <div class="sign__input-wrapper mb-25">
+                                    <div class="profile__edit-input">
                                          {{-- @foreach($guru as $value)
                                                 @dd($value->id)
                                                 @endforeach --}}

@@ -7,6 +7,7 @@ use App\Models\Kelas;
 use App\Models\Tugas;
 use App\Models\Siswa;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Tugassiswa;
 
 class TugasController extends Controller
 {
@@ -60,6 +61,7 @@ class TugasController extends Controller
     public function show($id)
     {
         $tugas = Tugas::where('id', $id)->get();
+        // dd($tugassiswa);
         return view('tugas/detail', ['tugas' => $tugas]);
     }
 
@@ -93,5 +95,13 @@ class TugasController extends Controller
         } else {
             return redirect()->back()->with('error', 'Tugas tidak ditemukan.');
         }
+    }
+
+    public function detail($tugas_id){
+        // $siswa_id = Siswa::select('id')->where('user_id', auth()->user()->id)->first();
+        $dtugas = Tugassiswa::select('tugas_siswa.*', 'siswa.nama', 'tugas.kelas_id')->join('siswa', 'tugas_siswa.siswa_id', '=', 'siswa.id')->join('tugas', 'tugas_siswa.tugas_id', '=', 'tugas.id')->where('tugas_id', $tugas_id)->get();
+        
+        // dd($dtugas);
+        return view('tugas/siswa', ['dtugas' => $dtugas]);
     }
 }

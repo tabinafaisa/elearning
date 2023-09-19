@@ -33,6 +33,12 @@
                                         <a href="{{ url('/tugas/siswa/create/' . $value->id) }}"
                                             class="tp-btn-5 tp-btn-7">Kerjakan Tugas</a>
                                     </div>
+                                @else
+                                    <div
+                                        class=" p-relative d-lg-flex align-items-center">
+                                        <a href="{{ url('/detail/' . $value->id) }}"
+                                            class="btn btn-info btn-lg">Diserahkan</a>
+                                    </div>
                                 @endif
                             </div>
                         </div>

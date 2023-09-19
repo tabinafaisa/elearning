@@ -13,9 +13,8 @@
                             <div class="row">
                                 <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-10 col-sm-10">
                                     <div class="slider__content p-relative z-index-1">
-                                        <span data-animation="fadeInUp" data-delay=".3s">Educal University</span>
-                                        <h2 class="slider__title" data-animation="fadeInUp" data-delay=".6s">Institution of
-                                            Higher Education</h2>
+                                        <span data-animation="fadeInUp" data-delay=".3s">Sekolah Menengah Kejuruan</span>
+                                        <h2 class="slider__title" data-animation="fadeInUp" data-delay=".6s">APLIKASI BELAJAR MENGAJAR</h2>
                                         <p data-animation="fadeInUp" data-delay=".9s">We believe everyone should have the
                                             opportunity to create progress through technolog.</p>
                                         {{-- <div class="slider__btn" data-animation="fadeInUp" data-delay="1.1s">
@@ -34,15 +33,14 @@
                             <div class="row">
                                 <div class="col-xxl-7 col-xl-8 col-lg-8 col-md-10 col-sm-10">
                                     <div class="slider__content p-relative z-index-1">
-                                        <span data-animation="fadeInUp" data-delay=".3s">Educal University</span>
-                                        <h2 class="slider__title" data-animation="fadeInUp" data-delay=".6s">Together We'll
-                                            Explore New Things</h2>
+                                        <span data-animation="fadeInUp" data-delay=".3s">Sekolah Menengah Kejuruan</span>
+                                        <h2 class="slider__title" data-animation="fadeInUp" data-delay=".6s">Temukan hal baru yang lebih menarik</h2>
                                         <p data-animation="fadeInUp" data-delay=".9s">We believe everyone should have the
                                             opportunity <br> to create progress through technolog.</p>
-                                        <div class="slider__btn" data-animation="fadeInUp" data-delay="1.1s">
+                                        {{-- <div class="slider__btn" data-animation="fadeInUp" data-delay="1.1s">
                                             <a href="" class="tp-btn" data-bs-toggle="modal"
                                                 data-bs-target="#modal">Bergabung ke Kelas</a>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -157,9 +155,6 @@
                                                                     <div class="course__tag-2">
                                                                         <a href="#">{{ $value->mapel }}</a>
                                                                     </div>
-                                                                    <div class="course__price-2">
-                                                                        <span>$136</span>
-                                                                    </div>
                                                                 </div>
                                                                 <h3 class="course__title-2">
                                                                     <a
@@ -210,14 +205,6 @@
                                                                             class="course__content-bottom d-flex justify-content-between align-items-center">
                                                                             <div class="course__price-2">
                                                                                 <h5>{{ $value->nama_guru }}</h5>
-                                                                            </div>
-                                                                            <div class="course__btn">
-                                                                                <a href="course-details.html"
-                                                                                    class="link-btn-2">
-                                                                                    Know Details
-                                                                                    <i class="far fa-arrow-right"></i>
-                                                                                    <i class="far fa-arrow-right"></i>
-                                                                                </a>
                                                                             </div>
                                                                         </div>
                                                                     </div>

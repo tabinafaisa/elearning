@@ -7,6 +7,7 @@ use App\Models\Tugassiswa;
 use App\Models\Siswa;
 use App\Models\Tugas;
 use Illuminate\Support\Facades\DB;
+use App\Models\Nilai;
 
 class TugassiswaController extends Controller
 {
@@ -44,7 +45,19 @@ class TugassiswaController extends Controller
     {
         $siswa_id = Siswa::select('id')->where('user_id', auth()->user()->id)->first();
         $siswa = Tugassiswa::select('tugas_siswa.*', 'siswa.nama as nama_siswa', 'tugas.judul')->join('siswa', 'tugas_siswa.siswa_id', '=', 'siswa.id')->join('tugas', 'tugas_siswa.tugas_id', 'tugas.id')->where('tugas.kelas_id', $kelas_id)->where('siswa.id', $siswa_id->id)->get();
-        // return $siswa_id;
+        // return $siswa;
         return view('/siswa/detail', ['siswa' => $siswa]);
+    }
+
+    public function nilai(Request $request){
+        $data = [ 
+            'tugas_siswa_id' => $request->id,
+            'siswa_id' => $request->siswa_id,
+            'kelas_id' => $request->kelas_id,
+            'skor' => $request->skor
+        ];
+
+        $nilai = Nilai::create($data);
+        return redirect()->back();
     }
 }

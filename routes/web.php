@@ -37,10 +37,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tugas/create/{kelas_id}', [TugasController::class, 'create']);
     Route::get('/tugas/detail/{id}', [TugasController::class, 'show']);
     Route::delete('/delete/{kelas_id}/{tugas_id}', [TugasController::class, 'destroy']);
+    Route::get('/detail/{id}', [TugasController::class, 'detail']);
     Route::resource('/tugas', TugasController::class);
     Route::get('/tugas/siswa/create/{id}', [TugassiswaController::class, 'index']);
     Route::post('/tugas/siswa/detail', [TugassiswaController::class, 'create']);
     Route::get('/tugas/detail_all/{kelas_id}', [TugassiswaController::class, 'detail']);
+    Route::post('/nilai', [TugassiswaController::class, 'nilai']);
 });
 
 Route::middleware(['auth', 'guru'])->group(function () {
