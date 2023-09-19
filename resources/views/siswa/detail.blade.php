@@ -2,12 +2,6 @@
 @section('content')
     <main>
         @foreach ($siswa as $value)
-        @php 
-        $extension = explode('.', $value->binary_data);
-        if(end($extension) != 'img'){
-            $extFile = $value->binary_data;
-        }
-        @endphp
             <section class="teacher__area pt-120 pb-110">
                 <div class="container">
                     <div class="row">
@@ -18,17 +12,12 @@
                                         <h4>{{ $value->nama_siswa }}</h4>
                                     </div>
                                     <div class="teacher__follow mb-5">
-                                        @if(!isset($extFile))
                                         <form action="#fileModal">
                                             @csrf
                                             <button type="button" class="teacher__follow-btn" data-toggle="modal"
                                                 data-target="#fileModal">
                                                 Open File</button>
                                         </form>
-                                        @else
-                                        <a href="{{url('/') .'/'. $extFile}}" target="_blank" class="teacher__follow-btn">
-                                                Open File</a>
-                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -47,10 +36,8 @@
                                 <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                @if(!isset($extFile))
-                                    <img src="{{ Storage::url($value->binary_data) }}" alt="File"
-                                        style="width: 100%; height: auto;">    
-                                @endif
+                                <img src="{{ Storage::url($value->binary_data) }}" alt="File"
+                                    style="width: 100%; height: auto;">
                             </div>
                         </div>
                     </div>
