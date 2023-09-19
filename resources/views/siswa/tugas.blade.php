@@ -27,6 +27,7 @@
                                     @csrf
                                     <input type="hidden" name="siswa_id" value="{{ $siswa->id }}">
                                     <input type="hidden" name="tugas_id" value="{{ $tugas->id }}">
+                                    <input type="hidden" name="kelas_id" value="{{ $tugas->kelas_id }}">
                                         <div class="sign__input-wrapper mb-25">
                                             <h5>Deskripsi</h5>
                                             <div class="contact__form-input">

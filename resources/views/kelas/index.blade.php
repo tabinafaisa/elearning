@@ -102,26 +102,33 @@
                                                     <a href="{{ route('kelas.create') }}"><ion-icon name="add-outline"
                                                             size="large"></ion-icon></a>
                                                 </li>
-                                            </ul>
-                                            <div class="header__search w-100 d-none d-xl-block">
-                                                <form action="{{ url('/search') }}" method="get">
-                                                    <div class="header__search-input">
-                                                        <input type="text" placeholder="Search...">
-                                                        <button class="header__search-btn" name="search"><svg
-                                                                width="18" height="18" viewBox="0 0 18 18"
-                                                                fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                <path
-                                                                    d="M8.11117 15.2222C12.0385 15.2222 15.2223 12.0385 15.2223 8.11111C15.2223 4.18375 12.0385 1 8.11117 1C4.18381 1 1.00006 4.18375 1.00006 8.11111C1.00006 12.0385 4.18381 15.2222 8.11117 15.2222Z"
-                                                                    stroke="#031220" stroke-width="2"
-                                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                                                <path d="M17 17L13.1334 13.1333" stroke="#031220"
-                                                                    stroke-width="2" stroke-linecap="round"
-                                                                    stroke-linejoin="round" />
-                                                            </svg>
-                                                        </button>
+                                                <li class="nav-item" role="presentation">
+                                                    <div class="col-xxl-3 col-xl-3 col-lg-2 col-md-6 col-6">
+                                                        
                                                     </div>
-                                                </form>
-                                            </div>
+                                                    <div class="header__bottom-right d-flex justify-content-end align-items-center pl-30">
+                                                        <form action="{{ url('/search') }}" method="get">
+                                                            <div class="header__search-input">
+                                                                <input type="text" placeholder="Search...">
+                                                                <button class="header__search-btn" name="search"><svg
+                                                                        width="18" height="18" viewBox="0 0 18 18"
+                                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path
+                                                                            d="M8.11117 15.2222C12.0385 15.2222 15.2223 12.0385 15.2223 8.11111C15.2223 4.18375 12.0385 1 8.11117 1C4.18381 1 1.00006 4.18375 1.00006 8.11111C1.00006 12.0385 4.18381 15.2222 8.11117 15.2222Z"
+                                                                            stroke="#031220" stroke-width="2"
+                                                                            stroke-linecap="round"
+                                                                            stroke-linejoin="round" />
+                                                                        <path d="M17 17L13.1334 13.1333" stroke="#031220"
+                                                                            stroke-width="2" stroke-linecap="round"
+                                                                            stroke-linejoin="round" />
+                                                                    </svg>
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </li>
+                                            </ul>
+
                                         </div>
                                     </div>
                                 </div>

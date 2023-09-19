@@ -95,8 +95,10 @@ class KelasController extends Controller
      */
     public function show(string $id)
     {
-        $kelas = Kelas::find($id);
-        $tugas = Tugas::all();
+        $kelas = Kelas::where('id', $id)->first();
+        $tugas = Tugas::where('kelas_id', $id)->get();
+        // $tugas = Tugas::join('kelas', 'tugas.kelas_id', '=', 'kelas.id')->first();
+        // dd($tugas);
         return view('tugas/index', ['kelas' => $kelas, 'tugas' => $tugas]);
     }
 

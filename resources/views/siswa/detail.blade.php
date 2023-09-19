@@ -1,8 +1,7 @@
 @extends('template.layout')
 @section('content')
     <main>
-        {{-- @foreach ($tugassiswa as $value) --}}
-            {{-- @dd($siswa) --}}
+        @foreach ($siswa as $value)
             <section class="teacher__area pt-120 pb-110">
                 <div class="container">
                     <div class="row">
@@ -10,22 +9,21 @@
                             <div class="teacher__wrapper">
                                 <div class="teacher__top d-md-flex align-items-end justify-content-between">
                                     <div class="teacher__info">
-                                        <h4>{{ $siswa->nama_siswa }}</h4>
+                                        <h4>{{ $value->nama_siswa }}</h4>
                                     </div>
                                     <div class="teacher__follow mb-5">
                                         <form action="#fileModal">
                                             @csrf
                                             <button type="button" class="teacher__follow-btn" data-toggle="modal"
-                                            data-target="#fileModal">
-                                            Open File</button>
+                                                data-target="#fileModal">
+                                                Open File</button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                             <div class="teacher__bio">
-                                <p>{{ $tugassiswa->deskripsi }}</p>
+                                <p>{{ $value->deskripsi }}</p>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -35,17 +33,16 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <button type="button" class="close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <img src="{{ Storage::url($tugassiswa->binary_data) }}" alt="File"
+                                <img src="{{ Storage::url($value->binary_data) }}" alt="File"
                                     style="width: 100%; height: auto;">
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-        {{-- @endforeach --}}
+        @endforeach
     </main>
 @endsection

@@ -2,15 +2,28 @@
 @section('content')
     <main>
         <!-- event area start -->
-        <section class="event__area pt-115">
+        <section class="event__area pt-115" style="background-color: aliceblue">
             <div class="container">
                 <div class="row">
                     <div class="col-xxl-12">
                         <div class="section__title-wrapper-2 text-center mb-60">
                             <h3 class="section__title-2">Daftar Tugas {{ $kelas->nama }}</h3>
                         </div>
+                        @if (session('success'))
+                            <div style="color: green">{{ session('success') }}</div>
+                        @endif
+
+                        @if (session('error'))
+                            <div style="color: red">{{ session('error') }}</div>
+                        @endif
                     </div>
                 </div>
+                @if (Auth::user()->hak_akses == 'guru')
+                    <div class="event__item white-bg mb-10 transition-3 p-relative d-lg-flex align-items-center justify-content-between"
+                        style="width: 27%">
+                        <h5>Kode kelas : {{ $kelas->code }}</h5>
+                    </div>
+                @endif
                 <div class="row">
                     <div class="col-xxl-12">
                         @foreach ($tugas as $key => $value)
@@ -50,17 +63,44 @@
                                         </span>
                                     </div>
                                     <div class="event__more ml-30">
-                                        <a href="{{ url('/tugas/detail/' . $value->id) }}" class="tp-btn-5 tp-btn-7">Selengkapnya </a>
+                                        <a href="{{ url('/tugas/detail/' . $value->id) }}"
+                                            class="btn btn-outline-info">Selengkapnya </a>
+                                    </div>
+                                    <div class="event__more ml-10">
+                                        <form action="{{ url('delete/' . $kelas->id . '/' . $value->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-outline-danger">Hapus</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
-                        @if(Auth::user()->hak_akses == 'guru')
-                        <div
-                            class="event__item white-bg mb-10 transition-3 p-relative d-lg-flex align-items-center justify-content-center">
-                            <a href="{{ url('/tugas/create/' . $kelas->id) }}" class="tp-btn-5 tp-btn-7">Tambah tugas </a>
 
-                        </div>
+                        @if (Auth::user()->hak_akses == 'guru')
+                            <div class="nav nav-tabs">
+                                <div class="teacher__follow-mb-5">
+                                    <a href="{{ url('/kelas#kelas') }}" class="teacher__follow-btn">Kembali</a>
+
+                                </div>
+                                <div class="teacher__follow-mb-5">
+                                    <a href="{{ url('/tugas/create/' . $kelas->id) }}" class="teacher__follow-btn">Tambah
+                                        tugas </a>
+
+                                </div>
+                            </div>
+                        @else
+                            <div class="nav nav-tabs">
+                                <div class="teacher__follow-mb-5">
+                                    <a href="{{ url('/tugas/detail_all/' . $kelas->id) }}"
+                                        class="teacher__follow-btn">Lihat tugas</a>
+
+                                </div>
+                                <div class="teacher__follow-mb-5">
+                                    <a href="{{ url('/kelas/siswa#kelas') }}" class="teacher__follow-btn">Kembali</a>
+
+                                </div>
+                            </div>
                         @endif
                     </div>
                 </div>

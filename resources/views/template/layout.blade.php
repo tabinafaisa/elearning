@@ -74,12 +74,21 @@
                             <div class="main-menu">
                                 <nav id="mobile-menu">
                                     <ul>
+                                        @if(Auth::user()->hak_akses == 'guru')
                                         <li>
                                             <a href="{{ url('/kelas') }}/#beranda">Beranda</a>
                                         </li>
                                         <li>
                                             <a href="{{ url('/kelas') }}/#kelas">Kelas</a>
                                         </li>
+                                        @else
+                                        <li>
+                                            <a href="{{ url('/kelas/siswa') }}/#beranda">Beranda</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url('/kelas/siswa') }}/#kelas">Kelas</a>
+                                        </li>
+                                        @endif
                                         <li>
                                             <a href="">Pengaturan</a>
                                             <ul class="submenu">

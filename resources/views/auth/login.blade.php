@@ -79,7 +79,7 @@
                                     <div class="sign__input-wrapper mb-10">
                                         <h5>Password</h5>
                                         <div class="sign__input">
-                                            <input type="text" placeholder="Password" name="password">
+                                            <input type="password" placeholder="Password" name="password">
                                             <i class="fal fa-lock"></i>
                                         </div>
                                     </div>

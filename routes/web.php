@@ -36,9 +36,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tugas/{kelas_id}', [TugasController::class, 'index']);
     Route::get('/tugas/create/{kelas_id}', [TugasController::class, 'create']);
     Route::get('/tugas/detail/{id}', [TugasController::class, 'show']);
+    Route::delete('/delete/{kelas_id}/{tugas_id}', [TugasController::class, 'destroy']);
     Route::resource('/tugas', TugasController::class);
     Route::get('/tugas/siswa/create/{id}', [TugassiswaController::class, 'index']);
     Route::post('/tugas/siswa/detail/{id}', [TugassiswaController::class, 'create']);
+    Route::get('/tugas/detail_all/{kelas_id}', [TugassiswaController::class, 'detail']);
 });
 
 Route::middleware(['auth', 'guru'])->group(function () {
@@ -49,9 +51,9 @@ Route::middleware(['auth', 'guru'])->group(function () {
 Route::middleware(['guest'])->group(function () {
     Route::get('/register', [RegisterController::class, 'register']);
     Route::get('/register/guru', [RegisterController::class, 'register_guru']);
-    Route::post('/register/guru/post', [RegisterController::class, 'guru']);
+    Route::post('/login', [RegisterController::class, 'guru']);
     Route::get('/register/siswa', [RegisterController::class, 'register_siswa']);
-    Route::post('/register/siswa/post', [RegisterController::class, 'siswa']);
+    Route::post('/login', [RegisterController::class, 'siswa']);
     Route::get('/login', [AuthController::class, 'login'])->name('login');
     Route::post('/login', [AuthController::class, 'auth']);
 });

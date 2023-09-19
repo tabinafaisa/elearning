@@ -66,8 +66,8 @@
                                             value="">
                                     </div>
                                     <br>
-                                    <div class="row">
-                                        <button class="tp-btn" type="submit"> <span></span>Update</button>
+                                    <div class="nav_nav-tabs">
+                                        <button class="btn btn-primary" type="submit">Update</button>
                                         <a href="{{ url('/kelas') }}" class="btn btn-success">Kembali</a>
                                     </div>
                                 </form>

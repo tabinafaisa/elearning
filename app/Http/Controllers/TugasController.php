@@ -83,8 +83,16 @@ class TugasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($kelas_id, $id)
     {
-        //
+        $kelas = Kelas::find($kelas_id);
+        $tugas = Tugas::find($id);
+        // dd($tugas);
+        if ($tugas) {
+            $tugas->delete();
+            return redirect()->back()->with('success', 'Tugas berhasil dihapus.');
+        } else {
+            return redirect()->back()->with('error', 'Tugas tidak ditemukan.');
+        }
     }
 }
