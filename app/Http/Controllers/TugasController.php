@@ -8,6 +8,7 @@ use App\Models\Tugas;
 use App\Models\Siswa;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Tugassiswa;
+use App\Models\Nilai;
 
 class TugasController extends Controller
 {
@@ -103,5 +104,18 @@ class TugasController extends Controller
         
         // dd($dtugas);
         return view('tugas/siswa', ['dtugas' => $dtugas]);
+    }
+
+    public function nilai(Request $request)
+    {
+        $data = [
+            'tugas_siswa_id' => $request->id,
+            'siswa_id' => $request->siswa_id,
+            'kelas_id' => $request->kelas_id,
+            'skor' => $request->skor
+        ];
+
+        $nilai = Nilai::create($data);
+        return redirect()->back();
     }
 }

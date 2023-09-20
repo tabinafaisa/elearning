@@ -19,9 +19,15 @@
                                                 <input type="hidden" name="id" value="{{ $value->id }}">
                                                 <input type="hidden" name="siswa_id" value="{{ $value->siswa_id }}">
                                                 <input type="hidden" name="kelas_id" value="{{ $value->kelas_id }}">
+                                                {{-- @if ($nilai) --}}
+                                                 {{-- <input type="number" max="100" min="0"
+                                                        class="input-group-text" style="width: 70%" name="skor">
+                                                <button type="submit" class="btn btn-outline-success" value="{{ $nilai->skor }}">a</button> --}}
+                                                {{-- @else --}}
                                                  <input type="number" max="100" min="0"
                                                         class="input-group-text" style="width: 70%" name="skor">
                                                 <button type="submit" class="btn btn-outline-success">a</button>
+                                                {{-- @endif --}}
                                         </form>
 
                                     </div>

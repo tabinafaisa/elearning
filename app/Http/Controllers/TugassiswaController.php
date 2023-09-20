@@ -49,15 +49,5 @@ class TugassiswaController extends Controller
         return view('/siswa/detail', ['siswa' => $siswa]);
     }
 
-    public function nilai(Request $request){
-        $data = [ 
-            'tugas_siswa_id' => $request->id,
-            'siswa_id' => $request->siswa_id,
-            'kelas_id' => $request->kelas_id,
-            'skor' => $request->skor
-        ];
 
-        $nilai = Nilai::create($data);
-        return redirect()->back();
-    }
 }

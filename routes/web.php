@@ -42,7 +42,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tugas/siswa/create/{id}', [TugassiswaController::class, 'index']);
     Route::post('/tugas/siswa/detail', [TugassiswaController::class, 'create']);
     Route::get('/tugas/detail_all/{kelas_id}', [TugassiswaController::class, 'detail']);
-    Route::post('/nilai', [TugassiswaController::class, 'nilai']);
+    Route::post('/nilai', [TugasController::class, 'nilai']);
 });
 
 Route::middleware(['auth', 'guru'])->group(function () {
