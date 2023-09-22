@@ -3,10 +3,11 @@
     <main>
 
         <!-- slider area start -->
-                <section class="slider__area" id="beranda">
+        <section class="slider__area" id="beranda">
             <div class="slider__active swiper-container">
                 <div class="swiper-wrapper" style="height: 100vh">
-                    <div class="slider__item swiper-slide p-relative slider__height d-flex align-items-center z-index-1" style="height: 100vh">
+                    <div class="slider__item swiper-slide p-relative slider__height d-flex align-items-center z-index-1"
+                        style="height: 100vh">
                         <div class="slider__bg slider__overlay include-bg"
                             data-background="{{ asset('/') }}img/slider/slider-1.jpg" style="height: 100vh"></div>
                         <div class="container" style="height: 100vh">
@@ -14,7 +15,8 @@
                                 <div class="col-xxl-6 col-xl-7 col-lg-8 col-md-10 col-sm-10">
                                     <div class="slider__content p-relative z-index-1">
                                         <span data-animation="fadeInUp" data-delay=".3s">Sekolah Menengah Kejuruan</span>
-                                        <h2 class="slider__title" data-animation="fadeInUp" data-delay=".6s">APLIKASI BELAJAR MENGAJAR</h2>
+                                        <h2 class="slider__title" data-animation="fadeInUp" data-delay=".6s">APLIKASI
+                                            BELAJAR MENGAJAR</h2>
                                         <p data-animation="fadeInUp" data-delay=".9s">We believe everyone should have the
                                             opportunity to create progress through technolog.</p>
                                     </div>
@@ -22,7 +24,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="slider__item swiper-slide p-relative slider__height d-flex align-items-center z-index-1" style="height: 100vh">
+                    <div class="slider__item swiper-slide p-relative slider__height d-flex align-items-center z-index-1"
+                        style="height: 100vh">
                         <div class="slider__bg slider__overlay include-bg"
                             data-background="{{ asset('/') }}img/slider/slider-2.jpg" style="height: 100vh"></div>
                         <div class="container" style="height: 100vh">
@@ -30,7 +33,8 @@
                                 <div class="col-xxl-7 col-xl-8 col-lg-8 col-md-10 col-sm-10">
                                     <div class="slider__content p-relative z-index-1">
                                         <span data-animation="fadeInUp" data-delay=".3s">Sekolah Menengah Kejuruan</span>
-                                        <h2 class="slider__title" data-animation="fadeInUp" data-delay=".6s">Temukan hal baru yang lebih menarik</h2>
+                                        <h2 class="slider__title" data-animation="fadeInUp" data-delay=".6s">Temukan hal
+                                            baru yang lebih menarik</h2>
                                         <p data-animation="fadeInUp" data-delay=".9s">We believe everyone should have the
                                             opportunity <br> to create progress through technolog.</p>
                                     </div>
@@ -103,9 +107,10 @@
                                                 </li>
                                                 <li class="nav-item" role="presentation">
                                                     <div class="col-xxl-3 col-xl-3 col-lg-2 col-md-6 col-6">
-                                                        
+
                                                     </div>
-                                                    <div class="header__bottom-right d-flex justify-content-end align-items-center pl-30">
+                                                    <div
+                                                        class="header__bottom-right d-flex justify-content-end align-items-center pl-30">
                                                         <form action="{{ url('/search') }}" method="get">
                                                             <div class="header__search-input">
                                                                 <input type="text" placeholder="Search...">
@@ -156,8 +161,9 @@
                                                                     <div class="course__tag-2 violet-bg">
                                                                         <a href="#">{{ $value->mapel }}</a>
                                                                     </div>
-                                                                    <div class="course__price-2">
-                                                                        <div class="course__action-icon mr-5">
+                                                                    <div class="course__price-3">
+                                                                        <div
+                                                                            class="course__action-icon justify-content-end">
                                                                             <span>
                                                                                 <a
                                                                                     href="{{ route('kelas.edit', $value->id) }}">
@@ -175,6 +181,15 @@
                                                                 <div
                                                                     class="course__bottom-2 d-flex align-items-center justify-content-between">
                                                                     <h5>{{ $value->nama_guru }}</h5>
+                                                                     <div
+                                                                    class="course__bottom d-sm-flex align-items-center justify-content-end">
+                                                                    
+                                                                    <div class="course__lesson">
+                                                                        <a href="{{ url('/data/siswa/'. $value->id) }}"><i class="fas fa-user"></i>
+                                                                            12 Siswa
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -205,7 +220,7 @@
                                                                                 <a href="#">{{ $value->mapel }}</a>
                                                                             </div>
                                                                             <div class="course__price-2">
-                                                                                <div class="course__action-icon mr-5">
+                                                                                <div class="course__action-icon">
                                                                                     <span>
                                                                                         <a
                                                                                             href="{{ url('/kelas/' . $value->id . '/edit') }}">
@@ -226,7 +241,7 @@
                                                                         <div
                                                                             class="course__content-bottom d-flex justify-content-between align-items-center">
                                                                             <div class="course__price-2">
-                                                                                <h5>{{ $value->guru_id }}</h5>
+                                                                                <h5>{{ $value->nama_guru }}</h5>
                                                                             </div>
                                                                             <div class="course__btn">
                                                                                 <a href="course-details.html"

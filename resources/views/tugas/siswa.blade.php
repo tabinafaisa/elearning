@@ -1,6 +1,7 @@
 @extends('template.layout')
 @section('content')
     <main>
+        {{-- @dd($dtugas) --}}
         @foreach ($dtugas as $value)
             <section class="teacher__area pt-120 pb-110">
                 <div class="container">
@@ -19,14 +20,18 @@
                                                 <input type="hidden" name="id" value="{{ $value->id }}">
                                                 <input type="hidden" name="siswa_id" value="{{ $value->siswa_id }}">
                                                 <input type="hidden" name="kelas_id" value="{{ $value->kelas_id }}">
-                                                {{-- @if ($nilai) --}}
-                                                 {{-- <input type="number" max="100" min="0"
-                                                        class="input-group-text" style="width: 70%" name="skor">
-                                                <button type="submit" class="btn btn-outline-success" value="{{ $nilai->skor }}">a</button> --}}
-                                                {{-- @else --}}
+                                                {{-- @if ($nilai)
                                                  <input type="number" max="100" min="0"
                                                         class="input-group-text" style="width: 70%" name="skor">
-                                                <button type="submit" class="btn btn-outline-success">a</button>
+                                                <button type="submit" class="btn btn-outline-success" value="{{ $nilai->skor }}">a</button>
+                                                @else --}}
+                                                @if (!empty($value->skor))
+                                                    <input type="text" class="input-group-text" style="width: 50%" name="skor" value="{{ $value->skor }}">
+                                                @else
+                                                    <input type="number" max="100" min="0"
+                                                        class="input-group-text" style="width: 70%" name="skor" required>
+                                                        <button type="submit" class="btn btn-outline-success"><ion-icon name="checkmark"></ion-icon></button>
+                                                @endif
                                                 {{-- @endif --}}
                                         </form>
 

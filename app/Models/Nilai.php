@@ -12,4 +12,8 @@ class Nilai extends Model
     protected $fillable = [
         'siswa_id', 'tugas_siswa_id', 'kelas_id', 'skor'
     ];
+
+    public function tugas(){
+        return $this->belongsTo(Tugassiswa::class);
+    }
 }

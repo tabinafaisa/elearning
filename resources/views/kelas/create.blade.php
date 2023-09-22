@@ -34,6 +34,7 @@
                                 @endif
                                 <form action="{{ route('kelas.store') }}" method="post" enctype="multipart/form-data">
                                     @csrf
+                                    <input type="hidden" name="guru_id" value="{{ $guru->id }}">
                                     <div class="profile__edit-input">
                                         <h5>Nama Kelas</h5>
                                         <div class="sign__input">
@@ -45,22 +46,6 @@
                                         <div class="sign__input">
                                             <input type="text" placeholder="Mata Pelajaran" name="mapel">
                                         </div>
-                                    </div>
-                                    <div class="profile__edit-input">
-                                         {{-- @foreach($guru as $value)
-                                                @dd($value->id)
-                                                @endforeach --}}
-                                        <h5>Nama Guru</h5>
-                                        <div class="col-md-12">
-                                           <div class="country-select">
-                                               <select style="display: none;" name="guru">
-                                                <option value="">Pilih Guru</option>
-                                                @foreach($guru as $value)
-                                                <option value="{{ $value->id }}"> {{$value->nama}}</option>
-                                                @endforeach
-                                               </select>
-                                           </div>
-                                       </div>
                                     </div>
                                     <div class="sign__input-wrapper mb-10">
                                         <h5>Tambahkan Foto</h5>

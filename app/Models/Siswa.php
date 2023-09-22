@@ -12,4 +12,9 @@ class Siswa extends Model
     protected $fillable = [
         'nama', 'user_id', 'nisn', 'kelas', 'jurusan',
     ];
+
+    public function tugas()
+    {
+        return $this->hasMany(Tugassiswa::class);
+    }
 }

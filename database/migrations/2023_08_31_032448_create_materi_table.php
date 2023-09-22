@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('kelas_id');
             $table->string('judul');
-            $table->string('deskripsi');
+            $table->longText('deskripsi');
             $table->string('nama_file');
             $table->binary('binary_data');
             $table->foreign('kelas_id')->references('id')->on('kelas')->onDelete('cascade');

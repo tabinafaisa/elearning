@@ -11,6 +11,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Tugas;
 use App\Models\Siswa;
+use App\Models\Kelassiswa;
 
 class KelasController extends Controller
 {
@@ -55,9 +56,10 @@ class KelasController extends Controller
     public function create()
     {
         // $guru = Guru::join('users', 'guru.user_id', '=', 'users.id')->get();
-        $guru = Guru::all();
+        // $guru = Guru::all();
+        $guru = Guru::where('user_id', auth()->user()->id)->first();
         // return $guru;
-        return view('kelas.create', compact('guru'));
+        return view('kelas.create', ['guru' => $guru]);
     }
 
     /**
@@ -74,7 +76,7 @@ class KelasController extends Controller
         // $guru = Guru::find($request->guru);
 
         $data = [
-            'guru_id' => $request->guru,
+            'guru_id' => $request->guru_id,
             'code' => $code,
             'nama' => $request->nama,
             'mapel' => $request->mapel,
@@ -151,5 +153,13 @@ class KelasController extends Controller
         $kodeinput = $request->input('search');
         $kelas = Kelas::where('nama', 'LIKE', '%' . $kodeinput . '%')->get();
         return view('/kelas/index', ['kelas' => $kelas, 'kodeinput' => $kodeinput]);
+    }
+
+    public function datasiswa($kelas_id){
+        $data_siswa = Kelassiswa::select('siswa.nama as nama_siswa')->join('siswa', 'kelas_siswa_detail.siswa_id', '=', 'siswa.id')->where('kelas_id', $kelas_id)->get();
+        $total = $data_siswa->count();
+        // return $total;
+        // return $kelas;
+        return view('siswa/data', ['data_siswa' => $data_siswa]);
     }
 }

@@ -9,6 +9,7 @@ use App\Models\Siswa;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Tugassiswa;
 use App\Models\Nilai;
+use Illuminate\Support\Facades\DB;
 
 class TugasController extends Controller
 {
@@ -98,11 +99,18 @@ class TugasController extends Controller
         }
     }
 
-    public function detail($tugas_id){
+    public function detail($tugas_id)
+    {
         // $siswa_id = Siswa::select('id')->where('user_id', auth()->user()->id)->first();
         $dtugas = Tugassiswa::select('tugas_siswa.*', 'siswa.nama', 'tugas.kelas_id')->join('siswa', 'tugas_siswa.siswa_id', '=', 'siswa.id')->join('tugas', 'tugas_siswa.tugas_id', '=', 'tugas.id')->where('tugas_id', $tugas_id)->get();
-        
-        // dd($dtugas);
+
+        // $dtugas = DB::table('tugas_siswa as ts')
+        //     ->join("nilai as n", 'n.tugas_siswa_id', '=', 'ts.id')
+        //     ->join("siswa as s", "s.id", "=", "n.siswa_id")
+        //     ->where("ts.id", $tugas_id)
+        //     ->get();
+
+        // return $dtugas;
         return view('tugas/siswa', ['dtugas' => $dtugas]);
     }
 
@@ -116,6 +124,6 @@ class TugasController extends Controller
         ];
 
         $nilai = Nilai::create($data);
-        return redirect()->back();
+        return redirect('/detail');
     }
 }

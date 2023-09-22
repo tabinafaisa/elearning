@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('tugas_id');
             $table->unsignedBigInteger('siswa_id');
-            $table->string('deskripsi');
+            $table->longText('deskripsi');
             $table->binary('binary_data');
             $table->foreign('tugas_id')->references('id')->on('tugas')->onDelete('cascade');
             $table->foreign('siswa_id')->references('id')->on('siswa')->onDelete('cascade');

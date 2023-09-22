@@ -37,15 +37,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tugas/create/{kelas_id}', [TugasController::class, 'create']);
     Route::get('/tugas/detail/{id}', [TugasController::class, 'show']);
     Route::delete('/delete/{kelas_id}/{tugas_id}', [TugasController::class, 'destroy']);
-    Route::get('/detail/{id}', [TugasController::class, 'detail']);
+    Route::get('/detail/{tugas_id}', [TugasController::class, 'detail']);
+    Route::post('/nilai', [TugasController::class, 'nilai']);
     Route::resource('/tugas', TugasController::class);
     Route::get('/tugas/siswa/create/{id}', [TugassiswaController::class, 'index']);
     Route::post('/tugas/siswa/detail', [TugassiswaController::class, 'create']);
     Route::get('/tugas/detail_all/{kelas_id}', [TugassiswaController::class, 'detail']);
-    Route::post('/nilai', [TugasController::class, 'nilai']);
+    
 });
 
 Route::middleware(['auth', 'guru'])->group(function () {
+    Route::get('/data/siswa/{kelas_id}', [KelasController::class, 'datasiswa']);
     Route::get('/search', [KelasController::class, 'search']);
     Route::resource('/kelas', KelasController::class);
 });
