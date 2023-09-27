@@ -59,7 +59,7 @@
                     <div class="col-xxl-12">
                         <div class="course__tab-inner white-bg mb-50">
                             <div class="row align-items-center">
-                                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 ">
                                     <div class="course__tab-wrapper d-flex align-items-center">
                                         <div class="course__tab-btn">
                                             <ul class="nav nav-tabs" id="courseTab" role="tablist">
@@ -105,38 +105,34 @@
                                                     <a href="{{ route('kelas.create') }}"><ion-icon name="add-outline"
                                                             size="large"></ion-icon></a>
                                                 </li>
-                                                <li class="nav-item" role="presentation">
-                                                    <div class="col-xxl-3 col-xl-3 col-lg-2 col-md-6 col-6">
 
-                                                    </div>
-                                                    <div
-                                                        class="header__bottom-right d-flex justify-content-end align-items-center pl-30">
-                                                        <form action="{{ url('/search') }}" method="get">
-                                                            <div class="header__search-input">
-                                                                <input type="text" placeholder="Search...">
-                                                                <button class="header__search-btn" name="search"><svg
-                                                                        width="18" height="18" viewBox="0 0 18 18"
-                                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                        <path
-                                                                            d="M8.11117 15.2222C12.0385 15.2222 15.2223 12.0385 15.2223 8.11111C15.2223 4.18375 12.0385 1 8.11117 1C4.18381 1 1.00006 4.18375 1.00006 8.11111C1.00006 12.0385 4.18381 15.2222 8.11117 15.2222Z"
-                                                                            stroke="#031220" stroke-width="2"
-                                                                            stroke-linecap="round"
-                                                                            stroke-linejoin="round" />
-                                                                        <path d="M17 17L13.1334 13.1333" stroke="#031220"
-                                                                            stroke-width="2" stroke-linecap="round"
-                                                                            stroke-linejoin="round" />
-                                                                    </svg>
-                                                                </button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </li>
                                             </ul>
 
                                         </div>
                                     </div>
                                 </div>
-
+                                <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-6 ">
+                                    <div class="course__tab-wrapper d-flex justify-content-end">
+                                        <form action="{{ url('/search') }}" method="post">
+                                            @csrf
+                                            <div class="header__search-input">
+                                                <input type="text" placeholder="Search...">
+                                                <button class="header__search-btn" name="search"><svg width="18"
+                                                        height="18" viewBox="0 0 18 18" fill="none"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M8.11117 15.2222C12.0385 15.2222 15.2223 12.0385 15.2223 8.11111C15.2223 4.18375 12.0385 1 8.11117 1C4.18381 1 1.00006 4.18375 1.00006 8.11111C1.00006 12.0385 4.18381 15.2222 8.11117 15.2222Z"
+                                                            stroke="#031220" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <path d="M17 17L13.1334 13.1333" stroke="#031220"
+                                                            stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
@@ -181,15 +177,17 @@
                                                                 <div
                                                                     class="course__bottom-2 d-flex align-items-center justify-content-between">
                                                                     <h5>{{ $value->nama_guru }}</h5>
-                                                                     <div
-                                                                    class="course__bottom d-sm-flex align-items-center justify-content-end">
-                                                                    
-                                                                    <div class="course__lesson">
-                                                                        <a href="{{ url('/data/siswa/'. $value->id) }}"><i class="fas fa-user"></i>
-                                                                            12 Siswa
-                                                                        </a>
+                                                                    <div
+                                                                        class="course__bottom d-sm-flex align-items-center justify-content-end">
+
+                                                                        <div class="course__lesson">
+                                                                            <a
+                                                                                href="{{ url('/data/siswa/' . $value->id) }}"><i
+                                                                                    class="fas fa-user"></i>
+                                                                                {{ $value->banyak }} siswa
+                                                                            </a>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -197,6 +195,7 @@
                                                 @endforeach
                                             </div>
                                         </div>
+                                        {{-- {{ QrCode::size(100)->generate('helloworld') }} --}}
                                         <div class="tab-pane fade" id="list" role="tabpanel"
                                             aria-labelledby="list-tab">
                                             <div class="row">

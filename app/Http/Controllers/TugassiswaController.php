@@ -44,7 +44,7 @@ class TugassiswaController extends Controller
     public function detail($kelas_id)
     {
         $siswa_id = Siswa::select('id')->where('user_id', auth()->user()->id)->first();
-        $siswa = Tugassiswa::select('tugas_siswa.*', 'siswa.nama as nama_siswa', 'tugas.judul')->join('siswa', 'tugas_siswa.siswa_id', '=', 'siswa.id')->join('tugas', 'tugas_siswa.tugas_id', 'tugas.id')->where('tugas.kelas_id', $kelas_id)->where('siswa.id', $siswa_id->id)->get();
+        $siswa = Tugassiswa::select('tugas_siswa.*', 'siswa.nama as nama_siswa', 'tugas.judul', 'tugas.deadline')->join('siswa', 'tugas_siswa.siswa_id', '=', 'siswa.id')->join('tugas', 'tugas_siswa.tugas_id', 'tugas.id')->where('tugas.kelas_id', $kelas_id)->where('siswa.id', $siswa_id->id)->get();
         // $nilai = Nilai::where('tugas_siswa_id', $siswa->id)->first();
         // return $siswa;
         // return $nilai;

@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Tugassiswa;
 use App\Models\Nilai;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class TugasController extends Controller
 {
@@ -38,6 +40,7 @@ class TugasController extends Controller
     public function store(Request $request)
     {
         // return $request;
+        // dd($request->file('file_tugas'));
         $file = $request->file('file_tugas')->store('public/img');
 
         $data = [
@@ -63,8 +66,10 @@ class TugasController extends Controller
     public function show($id)
     {
         $tugas = Tugas::where('id', $id)->get();
+        $tugassiswa = Tugassiswa::where(['tugas_id' => $id, 'siswa_id' => Session::get('data_diri')["data"]->id])->first();
+        // return $tugassiswa;
         // dd($tugassiswa);
-        return view('tugas/detail', ['tugas' => $tugas]);
+        return view('tugas/detail', ['tugas' => $tugas, 'tugassiswa' => $tugassiswa]);
     }
 
     /**
@@ -86,6 +91,8 @@ class TugasController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+
+    //  menghapus data di tabel tugas
     public function destroy($kelas_id, $id)
     {
         $kelas = Kelas::find($kelas_id);
@@ -102,15 +109,8 @@ class TugasController extends Controller
     public function detail($tugas_id)
     {
         // $siswa_id = Siswa::select('id')->where('user_id', auth()->user()->id)->first();
-        $dtugas = Tugassiswa::select('tugas_siswa.*', 'siswa.nama', 'tugas.kelas_id')->join('siswa', 'tugas_siswa.siswa_id', '=', 'siswa.id')->join('tugas', 'tugas_siswa.tugas_id', '=', 'tugas.id')->where('tugas_id', $tugas_id)->get();
+        $dtugas = Tugassiswa::select('tugas_siswa.*', 'siswa.nama', 'tugas.kelas_id', 'tugas.deadline')->join('siswa', 'tugas_siswa.siswa_id', '=', 'siswa.id')->join('tugas', 'tugas_siswa.tugas_id', '=', 'tugas.id')->where('tugas_id', $tugas_id)->get();
 
-        // $dtugas = DB::table('tugas_siswa as ts')
-        //     ->join("nilai as n", 'n.tugas_siswa_id', '=', 'ts.id')
-        //     ->join("siswa as s", "s.id", "=", "n.siswa_id")
-        //     ->where("ts.id", $tugas_id)
-        //     ->get();
-
-        // return $dtugas;
         return view('tugas/siswa', ['dtugas' => $dtugas]);
     }
 
@@ -124,6 +124,10 @@ class TugasController extends Controller
         ];
 
         $nilai = Nilai::create($data);
-        return redirect('/detail');
+        return redirect()->back();
+    }
+
+    public function download(Request $request){
+        return Storage::download($request->path);
     }
 }

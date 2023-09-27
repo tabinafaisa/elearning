@@ -9,6 +9,7 @@
                         <div class="col-xxl-12 col-xl-12 col-lg-12">
                             <div class="teacher__wrapper">
                                 <div class="teacher__top d-md-flex align-items-end justify-content-between">
+
                                     <div class="teacher__info">
                                         <h4>{{ $value->nama }}</h4>
                                     </div>
@@ -26,11 +27,13 @@
                                                 <button type="submit" class="btn btn-outline-success" value="{{ $nilai->skor }}">a</button>
                                                 @else --}}
                                                 @if (!empty($value->skor))
-                                                    <input type="text" class="input-group-text" style="width: 50%" name="skor" value="{{ $value->skor }}">
+                                                    <input type="text" class="input-group-text" style="width: 50%"
+                                                        name="skor" value="{{ $value->skor }}">
                                                 @else
                                                     <input type="number" max="100" min="0"
                                                         class="input-group-text" style="width: 70%" name="skor" required>
-                                                        <button type="submit" class="btn btn-outline-success"><ion-icon name="checkmark"></ion-icon></button>
+                                                    <button type="submit" class="btn btn-outline-success"><ion-icon
+                                                            name="checkmark"></ion-icon></button>
                                                 @endif
                                                 {{-- @endif --}}
                                         </form>
@@ -39,6 +42,9 @@
                                 </div>
                             </div>
                         </div>
+                        @if (date('Y-m-d H:i', strtotime($value->created_at)) > date('Y-m-d H:i', strtotime($value->deadline)))
+                            <div class="alert alert-danger">pengumpulan melewati batas waktu</div>
+                        @endif
                         <div class="teacher__bio">
                             <p>{{ $value->deskripsi }}</p>
                         </div>

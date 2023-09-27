@@ -24,7 +24,7 @@ class KelassiswaController extends Controller
         // return $kelas;
         return view('siswa/home', ['kelas' => $kelas]);
     }
-
+    
     public function checkcode(Request $request)
     {
         $validate = $request->validate([

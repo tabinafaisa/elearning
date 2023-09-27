@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 class RegisterController extends Controller
 {
 
+    // fungsi untuk registrasi guru
     public function guru(Request $request)
     {
         $validate = $request->validate([
@@ -38,6 +39,7 @@ class RegisterController extends Controller
         return redirect(url('login'));
     }
 
+    // fungsi untuk registrasi siswa
     public function siswa(Request $request)
     {
         $validate = $request->validate([

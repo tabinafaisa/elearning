@@ -21,6 +21,9 @@
                                     </div>
                                 </div>
                             </div>
+                            @if (date('Y-m-d H:i', strtotime($value->created_at)) > date('Y-m-d H:i', strtotime($value->deadline)))
+                                <div class="alert alert-danger">pengumpulan melewati batas waktu</div>
+                            @endif
                             <div class="teacher__bio">
                                 <p>{{ $value->deskripsi }}</p>
                             </div>

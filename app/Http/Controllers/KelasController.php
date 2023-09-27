@@ -19,6 +19,7 @@ class KelasController extends Controller
      * Display a listing of the resource.
      */
 
+    //  untuk membuat kode unique
     public function generateUniqueCode()
     {
 
@@ -41,18 +42,23 @@ class KelasController extends Controller
         return $code;
     }
 
+    // mengambil data dari model kelas, menggunkan join untuk mengambil nama guru di tabel guru, menjumlahkan seluruh siswa yang bergabung di kelas tersebut, lalu dikirm ke view kelas.index
     public function index()
     {
-        // $kelas = Kelas::join('users', 'kelas.user_id', '=', 'users.id')->get();
-        // return redirect('/kelas', ['kelas' => $kelas]);
-
         $kelass = Kelas::select('kelas.*', 'guru.nama as nama_guru')->join('guru', 'kelas.guru_id', '=', 'guru.id')->where('guru.user_id', Auth::user()->id)->get();
+        foreach ($kelass as $kelas) {
+            $data_siswa = Kelassiswa::select('siswa.nama as nama_siswa')->join('siswa', 'kelas_siswa_detail.siswa_id', '=', 'siswa.id')->where('kelas_id', $kelas->id)->get();
+            $kelas->banyak = $data_siswa->count();
+        }
+
         return view('kelas.index', compact('kelass'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
+
+    // mengambil id guru dan dikimkan ke view kelas.create
     public function create()
     {
         // $guru = Guru::join('users', 'guru.user_id', '=', 'users.id')->get();
@@ -65,6 +71,7 @@ class KelasController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+    // fungsi untuk menambahkan kelas
     public function store(Request $request)
     {
         // Create a new Kelas record
@@ -155,11 +162,9 @@ class KelasController extends Controller
         return view('/kelas/index', ['kelas' => $kelas, 'kodeinput' => $kodeinput]);
     }
 
+    // menampilkan nama siswa yang tergabung di kelas tersebut
     public function datasiswa($kelas_id){
         $data_siswa = Kelassiswa::select('siswa.nama as nama_siswa')->join('siswa', 'kelas_siswa_detail.siswa_id', '=', 'siswa.id')->where('kelas_id', $kelas_id)->get();
-        $total = $data_siswa->count();
-        // return $total;
-        // return $kelas;
         return view('siswa/data', ['data_siswa' => $data_siswa]);
     }
 }
