@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Tugas;
 use App\Models\Siswa;
 use App\Models\Kelassiswa;
+use App\Models\Materi;
 
 class KelasController extends Controller
 {
@@ -102,13 +103,22 @@ class KelasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function showtugas(string $id)
     {
-        $kelas = Kelas::where('id', $id)->first();
-        $tugas = Tugas::where('kelas_id', $id)->get();
-        // $tugas = Tugas::join('kelas', 'tugas.kelas_id', '=', 'kelas.id')->first();
-        // dd($tugas);
-        return view('tugas/index', ['kelas' => $kelas, 'tugas' => $tugas]);
+        // mengambil data kelas pertama berdasarkan id
+        // $kelas = Kelas::where('id', $id)->first();
+        // mengambil seluruh data tugas berdasarkan id kelas
+        // $tugas = Tugas::where('kelas_id', $id)->get();
+        // mengirim data kelas, tugas, materi ke view tugas.index
+        // return view('tugas/index', ['kelas' => $kelas, 'tugas' => $tugas]);
+    }
+
+    public function showmateri($id)
+    {
+        // $kelas = Kelas::where('id', $id)->first();
+        // mengambil seluruh data materi berdasarkan id kelas
+        // $materi = Materi::where('kelas_id', $id)->get();
+        // return view('materi/index', ['kelas' => $kelas, 'materi' => $materi]);
     }
 
     /**
@@ -162,9 +172,16 @@ class KelasController extends Controller
         return view('/kelas/index', ['kelas' => $kelas, 'kodeinput' => $kodeinput]);
     }
 
-    // menampilkan nama siswa yang tergabung di kelas tersebut
-    public function datasiswa($kelas_id){
+    // menampilkan nama siswa yang tergabung sesuai dengan id kelas
+    public function datasiswa($kelas_id)
+    {
         $data_siswa = Kelassiswa::select('siswa.nama as nama_siswa')->join('siswa', 'kelas_siswa_detail.siswa_id', '=', 'siswa.id')->where('kelas_id', $kelas_id)->get();
         return view('siswa/data', ['data_siswa' => $data_siswa]);
+    }
+
+    public function detail($kelas_id)
+    {
+        $kelas = Kelas::find($kelas_id);
+        return view('kelas.detail', ['kelas' => $kelas]);
     }
 }

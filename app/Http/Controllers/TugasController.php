@@ -12,6 +12,7 @@ use App\Models\Nilai;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Materi;
 
 class TugasController extends Controller
 {
@@ -93,11 +94,13 @@ class TugasController extends Controller
      */
 
     //  menghapus data di tabel tugas
-    public function destroy($kelas_id, $id)
+    public function destroyTugas($kelas_id, $tugas_id)
     {
         $kelas = Kelas::find($kelas_id);
-        $tugas = Tugas::find($id);
+        $tugas = Tugas::find($tugas_id);
         // dd($tugas);
+        // $tugas->delete();
+        // return redirect()->back()->with('success', 'Tugas berhasil dihapus.');
         if ($tugas) {
             $tugas->delete();
             return redirect()->back()->with('success', 'Tugas berhasil dihapus.');
@@ -105,6 +108,7 @@ class TugasController extends Controller
             return redirect()->back()->with('error', 'Tugas tidak ditemukan.');
         }
     }
+
 
     public function detail($tugas_id)
     {
@@ -127,7 +131,8 @@ class TugasController extends Controller
         return redirect()->back();
     }
 
-    public function download(Request $request){
+    public function download(Request $request)
+    {
         return Storage::download($request->path);
     }
 }

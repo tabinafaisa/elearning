@@ -33,8 +33,8 @@
                                 <div class="col-xxl-7 col-xl-8 col-lg-8 col-md-10 col-sm-10">
                                     <div class="slider__content p-relative z-index-1">
                                         <span data-animation="fadeInUp" data-delay=".3s">Sekolah Menengah Kejuruan</span>
-                                        <h2 class="slider__title" data-animation="fadeInUp" data-delay=".6s">Temukan hal
-                                            baru yang lebih menarik</h2>
+                                        <h2 class="slider__title" data-animation="fadeInUp" data-delay=".6s">TEMUKAN HAL
+                                            BARU YANG LEBIH MENARIK</h2>
                                         <p data-animation="fadeInUp" data-delay=".9s">We believe everyone should have the
                                             opportunity <br> to create progress through technolog.</p>
                                     </div>
@@ -68,14 +68,14 @@
                                                         data-bs-target="#grid" type="button" role="tab"
                                                         aria-controls="grid" aria-selected="true">
                                                         <svg class="grid" viewBox="0 0 24 24">
-                                                            <rect x="3" y="3" class="st0"
-                                                                width="7" height="7" />
-                                                            <rect x="14" y="3" class="st0"
-                                                                width="7" height="7" />
-                                                            <rect x="14" y="14" class="st0"
-                                                                width="7" height="7" />
-                                                            <rect x="3" y="14" class="st0"
-                                                                width="7" height="7" />
+                                                            <rect x="3" y="3" class="st0" width="7"
+                                                                height="7" />
+                                                            <rect x="14" y="3" class="st0" width="7"
+                                                                height="7" />
+                                                            <rect x="14" y="14" class="st0" width="7"
+                                                                height="7" />
+                                                            <rect x="3" y="14" class="st0" width="7"
+                                                                height="7" />
                                                         </svg>
                                                     </button>
                                                 </li>
@@ -124,9 +124,8 @@
                                                             d="M8.11117 15.2222C12.0385 15.2222 15.2223 12.0385 15.2223 8.11111C15.2223 4.18375 12.0385 1 8.11117 1C4.18381 1 1.00006 4.18375 1.00006 8.11111C1.00006 12.0385 4.18381 15.2222 8.11117 15.2222Z"
                                                             stroke="#031220" stroke-width="2" stroke-linecap="round"
                                                             stroke-linejoin="round" />
-                                                        <path d="M17 17L13.1334 13.1333" stroke="#031220"
-                                                            stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round" />
+                                                        <path d="M17 17L13.1334 13.1333" stroke="#031220" stroke-width="2"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
                                                     </svg>
                                                 </button>
                                             </div>
@@ -146,7 +145,7 @@
                                                     <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
                                                         <div class="course__item-2 transition-3 white-bg mb-30 fix">
                                                             <div class="course__thumb-2 w-img fix">
-                                                                <a href="{{ url('/kelas/' . $value->id) }}">
+                                                                <a href="{{ url('/kelas/detail/' . $value->id) }}">
                                                                     <img src="{{ Storage::url($value->image) }}"
                                                                         alt="">
                                                                 </a>
@@ -172,7 +171,7 @@
                                                                 </div>
                                                                 <h3 class="course__title-2">
                                                                     <a
-                                                                        href="{{ url('/kelas/' . $value->id) }}">{{ $value->nama }}</a>
+                                                                        href="{{ url('/kelas/detail/' . $value->id) }}">{{ $value->nama }}</a>
                                                                 </h3>
                                                                 <div
                                                                     class="course__bottom-2 d-flex align-items-center justify-content-between">
@@ -206,7 +205,8 @@
                                                             <div class="row gx-0">
                                                                 <div class="col-xxl-4 col-xl-4 col-lg-4">
                                                                     <div class="course__thumb w-img p-relative fix">
-                                                                        <a href="course-details.html">
+                                                                        <a
+                                                                            href="{{ url('/kelas/detail/' . $value->id) }}">
                                                                             <img src="{{ Storage::url($value->image) }}"
                                                                                 alt="">
                                                                         </a>
@@ -222,7 +222,7 @@
                                                                                 <div class="course__action-icon">
                                                                                     <span>
                                                                                         <a
-                                                                                            href="{{ url('/kelas/' . $value->id . '/edit') }}">
+                                                                                            href="{{ url('/kelas/detail/' . $value->id . '/edit') }}">
                                                                                             <ion-icon
                                                                                                 name="create-outline"></ion-icon>
                                                                                         </a>
@@ -241,14 +241,6 @@
                                                                             class="course__content-bottom d-flex justify-content-between align-items-center">
                                                                             <div class="course__price-2">
                                                                                 <h5>{{ $value->nama_guru }}</h5>
-                                                                            </div>
-                                                                            <div class="course__btn">
-                                                                                <a href="course-details.html"
-                                                                                    class="link-btn-2">
-                                                                                    Know Details
-                                                                                    <i class="far fa-arrow-right"></i>
-                                                                                    <i class="far fa-arrow-right"></i>
-                                                                                </a>
                                                                             </div>
                                                                         </div>
                                                                     </div>

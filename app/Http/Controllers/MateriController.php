@@ -21,9 +21,10 @@ class MateriController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
+    public function create($kelas_id)
     {
-
+        $kelas = Kelas::find($kelas_id);
+        return view('materi/create', ['kelas' => $kelas]);
     }
 
     /**
@@ -46,16 +47,16 @@ class MateriController extends Controller
         } catch (QueryException $err) {
             return redirect()->back()->with('notif', ['status' => false, 'msg' => 'gagal menyimpan data']);
         }
-        return redirect(url('/tugas/' . $request->kelas_id))->with('notif', ['status' => true, 'msg' => 'berhasil menyimpan data']);
-   
+        return redirect(url('/materi/' . $request->kelas_id))->with('notif', ['status' => true, 'msg' => 'berhasil menyimpan data']);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $materi = Materi::where('id', $id)->get();
+        return view('materi/detail', ['materi' => $materi]);
     }
 
     /**
@@ -77,8 +78,18 @@ class MateriController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+
+    public function destroyMateri($kelas_id, $id)
     {
-        //
+        $kelas = Kelas::find($kelas_id);
+        $materi = Materi::find($id);
+        // $materi->delete();
+        // return redirect()->back()->with('success', 'materi berhasil dihapus');
+        if ($materi) {
+            $materi->delete();
+            return redirect()->back()->with('success', 'materi berhasil dihapus');
+        } else {
+            return redirect()->back()->with('error', 'materi tidak ditemukan.');
+        }
     }
 }

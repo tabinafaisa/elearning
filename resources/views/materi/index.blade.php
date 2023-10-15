@@ -1,53 +1,86 @@
 @extends('template.layout')
 @section('content')
     <main>
-        <!-- sign up area start -->
-        <section class="signup__area p-relative z-index-1 pt-100 pb-145">
-            <div class="sign__shape">
-                <img class="man-1" src="assets/img/icon/sign/man-1.png" alt="">
-                <img class="man-2" src="assets/img/icon/sign/man-2.png" alt="">
-                <img class="circle" src="assets/img/icon/sign/circle.png" alt="">
-                <img class="zigzag" src="assets/img/icon/sign/zigzag.png" alt="">
-                <img class="dot" src="assets/img/icon/sign/dot.png" alt="">
-                <img class="bg" src="assets/img/icon/sign/sign-up.png" alt="">
-            </div>
+        <!-- event area start -->
+        <section class="event__area pt-115" style="background-color: aliceblue">
             <div class="container">
                 <div class="row">
-                    <div class="col-xxl-8 offset-xxl-2 col-xl-8 offset-xl-2">
-                        <div class="section__title-wrapper text-center mb-55">
-                            <h2 class="section__title">Tambah Materi {{$kelas->nama}}</h2>
+                    <div class="col-xxl-12">
+                        <div class="section__title-wrapper-2 text-center mb-60">
+                            <h3 class="section__title-2">Daftar Materi {{ $kelas->nama }}</h3>
                         </div>
+                        @if (session('success'))
+                            <div style="color: green">{{ session('success') }}</div>
+                        @endif
+
+                        @if (session('error'))
+                            <div style="color: red">{{ session('error') }}</div>
+                        @endif
                     </div>
                 </div>
+
                 <div class="row">
-                    <div class="col-xxl-6 offset-xxl-3 col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
-                        <div class="sign__wrapper white-bg">
-                            <div class="sign__form">
-                                <form action="{{ url('/materi') }}" method="post" enctype="multipart/form-data">
-                                    @csrf
-                                    <input type="hidden" name="kelas_id" value="{{ $kelas->id }}">
-                                    <div class="sign__input-wrapper mb-25">
-                                        <h5>Judul</h5>
-                                        <div class="checkout-form-list">
-                                            <input type="text" name="judul">
-                                        </div>
-                                    <div class="sign__input-wrapper mb-25">
-                                        <h5>Deskripsi</h5>
-                                        <div class="contact__form-input">
-                                            <textarea name="deskripsi"></textarea>
-                                        </div>
+                    <div class="col-xxl-12">
+
+                        @foreach ($materi as $key => $value)
+                            <div
+                                class="event__item white-bg mb-10 transition-3 p-relative d-lg-flex align-items-center justify-content-between">
+
+                                <div class="event__left d-sm-flex align-items-center">
+                                    <div class="event__content">
+
+                                        <h3 class="event__title">
+                                            Materi : {{ $value->judul }}
+                                        </h3>
+
+
                                     </div>
-                                    <div class="sign__input-wrapper mb-25">
-                                        <h5>File</h5>
-                                        <div class="checkout-form-list">
-                                            <input type="file" name="file_mat">
-                                        </div>
+                                </div>
+
+                                <div class="event__right d-sm-flex align-items-center">
+                                    <div class="event__more ml-30">
+                                        <a href="{{ url('/materi/detail/' . $value->id) }}"
+                                            class="btn btn-outline-info">Selengkapnya </a>
                                     </div>
-                                    <br>
-                                    <button class="tp-btn  w-100"> <span></span>Tambahkan</button>
-                                </form>
+                                    <div class="event__more ml-10">
+                                        @if (Auth::user()->hak_akses == 'guru')
+                                            <form action="{{ url('/hapus/' . $kelas->id . '/' . $value->id) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button class="btn btn-outline-danger">Hapus</button>
+
+                                            </form>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
+
+
+                        @if (Auth::user()->hak_akses == 'guru')
+                            <div class="nav nav-tabs">
+                                <div class="teacher__follow-mb-5">
+                                    <a href="{{ url('/kelas/detail/' . $kelas->id) }}"
+                                        class="teacher__follow-btn">Kembali</a>
+
+                                </div>
+                                <div class="teacher__follow-mb-5">
+                                    <a href="{{ url('/materi/create/' . $kelas->id) }}" class="teacher__follow-btn">Tambah
+                                        materi </a>
+
+                                </div>
+                            </div>
+                        @else
+                            <div class="nav nav-tabs">
+                                <div class="teacher__follow-mb-5">
+                                    <a href="{{ url('/kelas/detail/' . $kelas->id) }}"
+                                        class="teacher__follow-btn">Kembali</a>
+
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

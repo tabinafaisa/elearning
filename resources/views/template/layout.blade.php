@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Eduker – Online Course & Education HTML5 Template</title>
+    <title>APBM - Aplikasi Belajar Mengajar</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -54,11 +54,11 @@
     <!-- pre loader area end -->
 
     <!-- back to top start -->
-    <div class="progress-wrap">
+    {{-- <div class="progress-wrap">
         <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
             <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
         </svg>
-    </div>
+    </div> --}}
     <!-- back to top end -->
 
     <!-- header area start -->
@@ -74,20 +74,20 @@
                             <div class="main-menu">
                                 <nav id="mobile-menu">
                                     <ul>
-                                        @if(Auth::user()->hak_akses == 'guru')
-                                        <li>
-                                            <a href="{{ url('/kelas') }}/#beranda">Beranda</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ url('/kelas') }}/#kelas">Kelas</a>
-                                        </li>
+                                        @if (Auth::user()->hak_akses == 'guru')
+                                            <li>
+                                                <a href="{{ url('/kelas') }}/#beranda">Beranda</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ url('/kelas') }}/#kelas">Kelas</a>
+                                            </li>
                                         @else
-                                        <li>
-                                            <a href="{{ url('/kelas/siswa') }}/#beranda">Beranda</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ url('/kelas/siswa') }}/#kelas">Kelas</a>
-                                        </li>
+                                            <li>
+                                                <a href="{{ url('/kelas/siswa') }}/#beranda">Beranda</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ url('/kelas/siswa') }}/#kelas">Kelas</a>
+                                            </li>
                                         @endif
                                         <li>
                                             <a href="">Pengaturan</a>
@@ -212,13 +212,7 @@
     <!-- footer area start -->
     <footer>
         <div class="footer__area">
-            <div class="footer__top grey-bg-4 pt-95 pb-45">
-                <div class="container">
-                    <div class="row">
-                    </div>
-                </div>
-            </div>
-            <div class="footer__bottom grey-bg-4">
+            <div class="footer__bottom grey-bg">
                 <div class="container">
                     <div class="footer__bottom-inner">
                         <div class="row">

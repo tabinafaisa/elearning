@@ -37,7 +37,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tugas/{kelas_id}', [TugasController::class, 'index']);
     Route::get('/tugas/create/{kelas_id}', [TugasController::class, 'create']);
     Route::get('/tugas/detail/{id}', [TugasController::class, 'show']);
-    Route::delete('/delete/{kelas_id}/{tugas_id}', [TugasController::class, 'destroy']);
+    Route::delete('/delete/{kelas_id}/{tugas_id}', [TugasController::class, 'destroyTugas']);
     Route::get('/detail/{tugas_id}', [TugasController::class, 'detail']);
     Route::post('/nilai', [TugasController::class, 'nilai']);
     Route::post('/download', [TugasController::class, 'download']);
@@ -45,14 +45,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tugas/siswa/create/{id}', [TugassiswaController::class, 'index']);
     Route::post('/tugas/siswa/detail', [TugassiswaController::class, 'create']);
     Route::get('/tugas/detail_all/{kelas_id}', [TugassiswaController::class, 'detail']);
-    Route::get('/materi/create/{kelas_id}', [MateriController::class, 'index']);
+    Route::get('/materi/{kelas_id}', [MateriController::class, 'index']);
+    Route::get('/materi/create/{kelas_id}', [MateriController::class, 'create']);
+    Route::get('/materi/detail/{id}', [MateriController::class, 'show']);
+    Route::delete('hapus/{kelas_id}/{materi_id}', [MateriController::class, 'destroyMateri']);
     Route::resource('/materi', MateriController::class);
-    
 });
 
 Route::middleware(['auth', 'guru'])->group(function () {
     Route::get('/data/siswa/{kelas_id}', [KelasController::class, 'datasiswa']);
     Route::post('/search', [KelasController::class, 'search']);
+    Route::get('/kelas/detail/{kelas_id}', [KelasController::class, 'detail']);
     Route::resource('/kelas', KelasController::class);
 });
 

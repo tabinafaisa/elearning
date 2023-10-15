@@ -2,7 +2,7 @@
 @section('content')
     <main>
 
-        @foreach ($tugas as $value)
+        @foreach ($materi as $value)
             <section class="blog__area pt-120 pb-120" style="background-color: aliceblue">
                 <div class="container">
                     <div class="row">
@@ -39,33 +39,8 @@
                                         <div class="postbox__text mb-40">
                                             <p>{{ $value->deskripsi }}</p>
                                         </div>
-                                        {{-- <div class="postbox__quote grey-bg-2 mb-45 p-relative fix">
-                                            <img class="quote" src="assets/img/blog/quote-1.png" alt="">
-                                            <blockquote>
-                                                <p>After I started learning design with Quillow, I realized that I had
-                                                    Improved to very advanced levels.</p>
-                                                <h4>Chris Collins</h4>
-                                            </blockquote>
-                                        </div> --}}
                                     </div>
                                 </div>
-                                @if (Auth::user()->hak_akses == 'siswa')
-                                    <div
-                                        class="event__item white-bg mb-10 transition-3 p-relative d-lg-flex align-items-center justify-content-center">
-                                        @if ($tugassiswa != '')
-                                            <a href="javascript:void(0)" class="tp-btn-5 tp-btn-7">Tugas sudah dikerjakan
-                                                pada {{ date('d/m/Y', strtotime($tugassiswa->created_at)) }}</a>
-                                        @else
-                                            <a href="{{ url('/tugas/siswa/create/' . $value->id) }}"
-                                                class="tp-btn-5 tp-btn-7">Kerjakan Tugas</a>
-                                        @endif
-                                    </div>
-                                @else
-                                    <div class=" p-relative d-lg-flex align-items-center">
-                                        <a href="{{ url('/detail/' . $value->id) }}"
-                                            class="btn btn-info btn-lg">Diserahkan</a>
-                                    </div>
-                                @endif
                             </div>
                         </div>
 
